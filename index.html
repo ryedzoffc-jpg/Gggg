@@ -3,292 +3,168 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    
-    <!-- MONETAG VERIFICATION META TAG - HARUS PERTAMA DI HEAD -->
     <meta name="monetag" content="26f74936b3211d17c713a0c181a76716">
-    
-    <title>DANA4D - Klaim Saldo Gratis</title>
+    <title>DANA4D - Reward Center</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
-    <!-- MONETAG SCRIPT - ZONE 10892791 (AL5SM.COM) -->
-    <script async src="https://al5sm.com/tag.min.js" data-zone="10892791"></script>
-    
-    <!-- MONETAG SCRIPT - ZONE 10892764 (3NBF4.COM) -->
-    <script async src="https://3nbf4.com/tag.min.js" data-zone="10892764"></script>
-    
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Arial, sans-serif; background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%); min-height: 100vh; padding: 20px; }
-        
-        .menu { display: flex; gap: 10px; background: #0D8C4A; padding: 12px 15px; justify-content: center; flex-wrap: wrap; border-radius: 50px; margin-bottom: 20px; }
-        .menu button { background: transparent; color: white; border: none; padding: 8px 22px; border-radius: 30px; font-size: 15px; cursor: pointer; font-weight: bold; }
-        .menu button i { margin-right: 8px; }
-        .menu button.active { background: #FFB800; color: black; }
-        
-        .page { display: none; max-width: 450px; margin: 0 auto; background: white; padding: 25px 20px; border-radius: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center; animation: fadeIn 0.3s ease; }
-        .page.active-page { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        
-        .vector-icon { width: 65px; height: 65px; margin: 0 auto 12px; background: url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"%230D8C4A\"><path d=\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z\"/></svg>') no-repeat center; background-size: contain; }
-        .saldo-besar { font-size: 46px; color: #0D8C4A; font-weight: bold; margin: 10px 0; }
-        .saldo-nominal { font-size: 38px; color: #0D8C4A; font-weight: bold; margin: 10px 0; }
-        h2 { margin-bottom: 8px; color: #333; font-size: 22px; }
-        p { color: #666; margin-bottom: 15px; font-size: 13px; }
-        
-        button.cta { background: #FFB800; padding: 14px 20px; border: none; border-radius: 50px; font-size: 16px; font-weight: bold; margin: 10px 0; cursor: pointer; width: 100%; transition: transform 0.1s; }
-        button.cta:active { transform: scale(0.97); }
-        button.cta:disabled { background: #ccc; cursor: not-allowed; }
-        button.cta i { margin-right: 8px; }
-        button.secondary { background: #e0e0e0; color: #333; padding: 10px 18px; border: none; border-radius: 30px; margin: 5px; cursor: pointer; font-size: 14px; }
-        button.secondary i { margin-right: 6px; }
-        
-        .ad-container { margin: 15px 0; min-height: 100px; background: #f9f9f9; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #999; border: 1px dashed #ccc; }
-        .info-text { font-size: 11px; color: #aaa; margin-top: 12px; }
-        .timer { font-size: 13px; color: #FFB800; font-weight: bold; margin: 8px 0; }
-        
-        input { width: 90%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 50px; text-align: center; font-size: 13px; background: #f9f9f9; }
-        .riwayat { margin-top: 15px; font-size: 12px; background: #f0f0f0; padding: 12px; border-radius: 12px; text-align: left; max-height: 150px; overflow-y: auto; }
-        .riwayat strong { display: block; margin-bottom: 8px; text-align: center; }
-        .teman-item { padding: 5px 0; border-bottom: 1px solid #ddd; font-size: 12px; }
-        .teman-item i { color: #0D8C4A; margin-right: 8px; }
-        .kosong { text-align: center; color: #999; }
-        
-        .level { display: inline-block; background: #0D8C4A; color: white; padding: 4px 15px; border-radius: 20px; font-size: 11px; font-weight: bold; margin-bottom: 10px; }
-        .btn-group { display: flex; gap: 10px; justify-content: center; margin-top: 10px; }
-        footer { text-align: center; margin-top: 20px; font-size: 10px; color: #aaa; }
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family:'Segoe UI',Arial;background:#f0f0f0;padding:20px;}
+        .menu{display:flex;gap:10px;background:#0D8C4A;padding:12px 15px;justify-content:center;border-radius:50px;margin-bottom:20px;}
+        .menu button{background:transparent;color:white;border:none;padding:8px 22px;border-radius:30px;font-size:15px;cursor:pointer;font-weight:bold;}
+        .menu button i{margin-right:8px;}
+        .menu button.active{background:#FFB800;color:black;}
+        .page{display:none;max-width:450px;margin:0 auto;background:white;padding:25px;border-radius:25px;box-shadow:0 10px 30px rgba(0,0,0,0.1);text-align:center;}
+        .page.active-page{display:block;}
+        .saldo-besar{font-size:46px;color:#0D8C4A;font-weight:bold;margin:15px 0;}
+        .saldo-nominal{font-size:38px;color:#0D8C4A;font-weight:bold;margin:15px 0;}
+        button.cta{background:#FFB800;padding:14px;border:none;border-radius:50px;font-size:16px;font-weight:bold;width:100%;cursor:pointer;margin:10px 0;}
+        button.cta:disabled{background:#ccc;cursor:not-allowed;}
+        .info-text{font-size:11px;color:#aaa;margin-top:10px;}
+        .timer{font-size:12px;color:#FFB800;margin:8px 0;}
+        .level{display:inline-block;background:#0D8C4A;color:white;padding:4px 15px;border-radius:20px;font-size:11px;margin-bottom:10px;}
+        .ad-box{margin:15px 0;min-height:280px;background:#f9f9f9;border-radius:12px;border:1px solid #eee;overflow:hidden;}
+        .ad-label{font-size:10px;color:#ccc;text-align:center;padding:4px;background:#f5f5f5;}
+        input{width:90%;padding:12px;margin:10px 0;border:1px solid #ddd;border-radius:50px;text-align:center;font-size:13px;}
+        button.secondary{background:#e0e0e0;padding:10px 18px;border:none;border-radius:30px;cursor:pointer;margin:5px;}
+        .btn-group{display:flex;gap:10px;justify-content:center;}
+        .riwayat{background:#f0f0f0;padding:12px;border-radius:12px;margin-top:15px;max-height:150px;overflow-y:auto;text-align:left;}
+        footer{text-align:center;margin-top:20px;font-size:10px;color:#aaa;}
+        h2{font-size:20px;margin-bottom:5px;color:#333;}
+        p{color:#666;font-size:13px;margin-bottom:15px;}
     </style>
 </head>
 <body>
 
 <div class="menu">
-    <button id="btnDashboard" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</button>
+    <button id="btnDashboard" class="active"><i class="fas fa-home"></i> Beranda</button>
     <button id="btnSaldo"><i class="fas fa-wallet"></i> Saldo</button>
-    <button id="btnBagikan"><i class="fas fa-users"></i> Bagikan</button>
+    <button id="btnBagikan"><i class="fas fa-users"></i> Undang</button>
 </div>
 
-<!-- DASHBOARD -->
 <div id="pageDashboard" class="page active-page">
-    <div class="vector-icon"></div>
     <div class="level" id="levelBadge">Bronze</div>
-    <h2>Halo, Member!</h2>
-    <p>Saldo DANA anda saat ini:</p>
+    <h2>Selamat Datang</h2>
     <div class="saldo-besar" id="dashboardSaldo">Rp0</div>
-    <div class="ad-container" id="ad-dashboard"><i class="fas fa-ad"></i> Monetag Ads</div>
-    <button class="cta" id="btnKlikIklan"><i class="fas fa-play-circle"></i> Klik Iklan Dapat Rp10.000</button>
+    <div class="ad-box">
+        <div class="ad-label">Advertisement</div>
+        <div data-zone="10892791" style="min-height:250px;"></div>
+    </div>
+    <div class="ad-box">
+        <div class="ad-label">Advertisement</div>
+        <div data-zone="10892764" style="min-height:250px;"></div>
+    </div>
+    <button class="cta" id="btnKlikIklan"><i class="fas fa-play"></i> Dapatkan Reward</button>
     <div id="timerDisplay" class="timer"></div>
-    <div class="info-text"><i class="fas fa-info-circle"></i> Klik iklan, tutup tab, klik tombol lagi untuk klaim</div>
+    <div class="info-text"><i class="fas fa-info-circle"></i> Reward akan ditambahkan setelah melihat konten</div>
 </div>
 
-<!-- SALDO -->
 <div id="pageSaldo" class="page">
-    <div class="vector-icon"></div>
-    <h2>Saldo DANA</h2>
+    <h2>Total Saldo</h2>
     <div class="saldo-nominal" id="saldoDisplay">Rp0</div>
     <div class="level" id="levelDisplay">Bronze</div>
-    <div class="ad-container" id="ad-saldo"><i class="fas fa-ad"></i> Monetag Ads</div>
-    <button class="cta" id="tarikBtn"><i class="fas fa-hand-holding-usd"></i> Tarik ke DANA (Min Rp50.000)</button>
-    <div id="pesanTarik" class="info-text"></div>
+    <div class="ad-box">
+        <div class="ad-label">Advertisement</div>
+        <div data-zone="10892791" style="min-height:250px;"></div>
+    </div>
+    <button class="cta" id="tarikBtn"><i class="fas fa-money-bill-wave"></i> Penarikan</button>
+    <div class="info-text">Minimal penarikan Rp50.000</div>
 </div>
 
-<!-- BAGIKAN -->
 <div id="pageBagikan" class="page">
-    <div class="vector-icon"></div>
-    <h2>Ajak Teman Dapat Rp10.000</h2>
-    <p>Setiap teman yang <strong>klik iklan</strong> lewat link kamu:<br>Kamu +Rp10.000, Teman +Rp10.000</p>
-    <div class="ad-container" id="ad-bagikan"><i class="fas fa-ad"></i> Monetag Ads</div>
+    <h2>Undang Pengguna Baru</h2>
+    <p>Dapatkan bonus untuk setiap pengguna baru</p>
     <input type="text" id="linkRef" readonly>
     <div class="btn-group">
-        <button class="secondary" id="copyBtn"><i class="fas fa-copy"></i> Salin Link</button>
+        <button class="secondary" id="copyBtn"><i class="fas fa-copy"></i> Salin</button>
         <button class="secondary" id="bagikanWa"><i class="fab fa-whatsapp"></i> WhatsApp</button>
     </div>
     <div class="riwayat">
-        <strong><i class="fas fa-user-friends"></i> Teman yang sudah gabung</strong>
+        <strong>Daftar Referral</strong>
         <div id="daftarTeman">Belum ada</div>
     </div>
 </div>
 
-<footer><i class="fas fa-shield-alt"></i> Verifikasi Monetag Aktif | DANA4D</footer>
+<footer>DANA4D Reward Center</footer>
+
+<script async src="https://al5sm.com/tag.min.js" data-zone="10892791"></script>
+<script async src="https://3nbf4.com/tag.min.js" data-zone="10892764"></script>
 
 <script>
-    // ==================== INIT ====================
-    let saldo = parseInt(localStorage.getItem("saldoDana")) || 0;
-    
-    function getLevel(s) {
-        if (s >= 500000) return { name: "Platinum", bonus: 15000 };
-        if (s >= 200000) return { name: "Gold", bonus: 13000 };
-        if (s >= 75000) return { name: "Silver", bonus: 11000 };
-        return { name: "Bronze", bonus: 10000 };
+(function(){
+    let s=parseInt(localStorage.getItem("b"))||0;
+    function l(v){return v>=5e5?"Platinum":v>=2e5?"Gold":v>=75e3?"Silver":"Bronze";}
+    function u(){
+        document.getElementById("dashboardSaldo").innerText="Rp"+s.toLocaleString();
+        document.getElementById("saldoDisplay").innerText="Rp"+s.toLocaleString();
+        let lm=l(s);
+        document.querySelectorAll(".level").forEach(el=>el.innerText=lm);
     }
-    
-    function updateLevelUI() {
-        let level = getLevel(saldo);
-        document.querySelectorAll(".level").forEach(el => el.innerText = level.name);
+    function st(v){s=v;localStorage.setItem("b",s);u();}
+    u();
+    let cd=parseInt(localStorage.getItem("cd"))||0;
+    function ud(){
+        let n=Date.now();
+        if(n<cd){let r=Math.ceil((cd-n)/1000);document.getElementById("timerDisplay").innerHTML='⏱️ '+r+' detik';document.getElementById("btnKlikIklan").disabled=true;}
+        else{document.getElementById("timerDisplay").innerHTML='';document.getElementById("btnKlikIklan").disabled=false;}
     }
-    
-    let userId = localStorage.getItem("userId");
-    if (!userId) {
-        userId = "USR" + Math.random().toString(36).substring(2, 8).toUpperCase();
-        localStorage.setItem("userId", userId);
-    }
-    
-    function updateAllSaldo() {
-        document.getElementById("dashboardSaldo").innerText = "Rp" + saldo.toLocaleString();
-        document.getElementById("saldoDisplay").innerText = "Rp" + saldo.toLocaleString();
-        updateLevelUI();
-    }
-    updateAllSaldo();
-    
-    function setSaldo(nilai) {
-        saldo = nilai;
-        localStorage.setItem("saldoDana", saldo);
-        updateAllSaldo();
-    }
-    
-    // Cooldown
-    let cooldownUntil = parseInt(localStorage.getItem("cooldownUntil")) || 0;
-    let timerInterval = null;
-    
-    function updateTimerDisplay() {
-        let now = Date.now();
-        if (now < cooldownUntil) {
-            let remaining = Math.ceil((cooldownUntil - now) / 1000);
-            document.getElementById("timerDisplay").innerHTML = '<i class="fas fa-hourglass-half"></i> Tunggu ' + remaining + ' detik';
-            document.getElementById("btnKlikIklan").disabled = true;
-            return true;
-        } else {
-            document.getElementById("timerDisplay").innerHTML = '';
-            document.getElementById("btnKlikIklan").disabled = false;
-            return false;
-        }
-    }
-    
-    function startCooldown(seconds = 60) {
-        cooldownUntil = Date.now() + (seconds * 1000);
-        localStorage.setItem("cooldownUntil", cooldownUntil);
-        if (timerInterval) clearInterval(timerInterval);
-        timerInterval = setInterval(() => {
-            if (!updateTimerDisplay() && timerInterval) {
-                clearInterval(timerInterval);
-                timerInterval = null;
-            }
-        }, 1000);
-        updateTimerDisplay();
-    }
-    updateTimerDisplay();
-    
-    // DASHBOARD
-    let sudahKlikIklan = localStorage.getItem("sudahKlikIklan") === "true";
-    document.getElementById("btnKlikIklan").onclick = function() {
-        if (Date.now() < cooldownUntil) {
-            alert("Tunggu beberapa detik lagi!");
-            return;
-        }
-        if (!sudahKlikIklan) {
-            window.open("https://al5sm.com/click?zone=10892791", "_blank");
-            window.open("https://3nbf4.com/click?zone=10892764", "_blank");
-            localStorage.setItem("sudahKlikIklan", "true");
-            alert("2 iklan terbuka. Tutup kedua tab, lalu klik tombol lagi!");
-        } else {
-            let bonus = getLevel(saldo).bonus;
-            setSaldo(saldo + bonus);
-            localStorage.removeItem("sudahKlikIklan");
-            startCooldown(60);
-            alert("+" + bonus.toLocaleString() + " masuk ke saldo!");
+    setInterval(ud,1000);ud();
+    let sk=localStorage.getItem("sk")==="true";
+    document.getElementById("btnKlikIklan").onclick=function(){
+        if(Date.now()<cd){alert("Tunggu beberapa saat");return;}
+        if(!sk){
+            window.open("https://al5sm.com/click?zone=10892791","_blank");
+            window.open("https://3nbf4.com/click?zone=10892764","_blank");
+            localStorage.setItem("sk","true");
+            alert("Buka konten, lalu klik tombol lagi");
+        }else{
+            let b=10000;
+            if(s>=5e5)b=15000;else if(s>=2e5)b=13000;else if(s>=75e3)b=11000;
+            st(s+b);
+            localStorage.removeItem("sk");
+            cd=Date.now()+6e4;
+            localStorage.setItem("cd",cd);
+            alert("+"+b.toLocaleString());
+            ud();
         }
     };
-    
-    // SALDO
-    let sudahKlikIklanTarik = localStorage.getItem("sudahKlikIklanTarik") === "true";
-    document.getElementById("tarikBtn").onclick = function() {
-        if (saldo < 50000) {
-            alert("Minimal tarik Rp50.000!");
-            return;
-        }
-        if (!sudahKlikIklanTarik) {
-            window.open("https://al5sm.com/click?zone=10892791", "_blank");
-            window.open("https://3nbf4.com/click?zone=10892764", "_blank");
-            localStorage.setItem("sudahKlikIklanTarik", "true");
-            alert("Tutup kedua iklan, lalu klik Tarik lagi!");
-        } else {
-            localStorage.removeItem("sudahKlikIklanTarik");
-            alert("Penarikan Rp" + saldo.toLocaleString() + " diproses. Maks 1x24 jam.");
+    let stk=localStorage.getItem("stk")==="true";
+    document.getElementById("tarikBtn").onclick=function(){
+        if(s<5e4){alert("Minimal Rp50.000");return;}
+        if(!stk){
+            window.open("https://al5sm.com/click?zone=10892791","_blank");
+            window.open("https://3nbf4.com/click?zone=10892764","_blank");
+            localStorage.setItem("stk","true");
+            alert("Proses penarikan");
+        }else{
+            localStorage.removeItem("stk");
+            alert("Pengajuan penarikan Rp"+s.toLocaleString()+" sedang diproses");
         }
     };
-    
-    // BAGIKAN
-    let temanBerhasil = JSON.parse(localStorage.getItem("temanBerhasil")) || [];
-    function updateTemanList() {
-        let el = document.getElementById("daftarTeman");
-        if (temanBerhasil.length === 0) el.innerHTML = '<div class="kosong"><i class="fas fa-user-plus"></i> Belum ada teman</div>';
-        else el.innerHTML = temanBerhasil.map(t => '<div class="teman-item"><i class="fas fa-check-circle"></i> ' + t + '</div>').join('');
-    }
-    updateTemanList();
-    
-    let baseUrl = window.location.origin;
-    document.getElementById("linkRef").value = baseUrl + "/index.html?ref=" + userId;
-    
-    document.getElementById("copyBtn").onclick = () => {
-        let link = document.getElementById("linkRef");
-        link.select();
-        document.execCommand("copy");
-        alert("Link disalin!");
-    };
-    
-    let sudahKlikIklanBagikan = localStorage.getItem("sudahKlikIklanBagikan") === "true";
-    document.getElementById("bagikanWa").onclick = function() {
-        if (!sudahKlikIklanBagikan) {
-            window.open("https://al5sm.com/click?zone=10892791", "_blank");
-            window.open("https://3nbf4.com/click?zone=10892764", "_blank");
-            localStorage.setItem("sudahKlikIklanBagikan", "true");
-            alert("Tutup iklan, lalu klik Bagikan lagi!");
-        } else {
-            let link = document.getElementById("linkRef").value;
-            window.open(`https://wa.me/?text=YUK DAPAT BONUS Rp10.000! ${link}`, "_blank");
-            localStorage.removeItem("sudahKlikIklanBagikan");
-        }
-    };
-    
-    // REFERRAL
-    const urlParams = new URLSearchParams(window.location.search);
-    const refBy = urlParams.get("ref");
-    if (refBy && refBy !== userId) {
-        let sudahKlikIklanTeman = localStorage.getItem("sudahKlikIklanTeman") === "true";
-        if (!sudahKlikIklanTeman) {
-            window.open("https://al5sm.com/click?zone=10892791", "_blank");
-            window.open("https://3nbf4.com/click?zone=10892764", "_blank");
-            localStorage.setItem("sudahKlikIklanTeman", "true");
-            alert("Klik 2 iklan untuk aktifkan bonus!");
-        } else {
-            let listTeman = JSON.parse(localStorage.getItem("temanBerhasil")) || [];
-            if (!listTeman.includes(refBy)) {
-                listTeman.push(refBy);
-                localStorage.setItem("temanBerhasil", JSON.stringify(listTeman));
-                setSaldo(saldo + 10000);
-                alert("+Rp10.000 untuk kamu dan pengundang!");
-                localStorage.removeItem("sudahKlikIklanTeman");
-                setTimeout(() => window.location.href = baseUrl + "/index.html", 1500);
-            }
+    let uid=localStorage.getItem("uid");
+    if(!uid){uid="U"+Math.random().toString(36).substring(2,8).toUpperCase();localStorage.setItem("uid",uid);}
+    let url=window.location.origin+"/index.html?r="+uid;
+    document.getElementById("linkRef").value=url;
+    document.getElementById("copyBtn").onclick=function(){let l=document.getElementById("linkRef");l.select();document.execCommand("copy");alert("Tersalin");};
+    document.getElementById("bagikanWa").onclick=function(){window.open("https://wa.me/?text=Reward Center - "+url,"_blank");};
+    function sp(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active-page'));document.getElementById(id).classList.add('active-page');document.querySelectorAll('.menu button').forEach(b=>b.classList.remove('active'));if(id==='pageDashboard')document.getElementById('btnDashboard').classList.add('active');if(id==='pageSaldo')document.getElementById('btnSaldo').classList.add('active');if(id==='pageBagikan')document.getElementById('btnBagikan').classList.add('active');}
+    document.getElementById('btnDashboard').onclick=()=>sp('pageDashboard');document.getElementById('btnSaldo').onclick=()=>sp('pageSaldo');document.getElementById('btnBagikan').onclick=()=>sp('pageBagikan');
+    let rf=new URLSearchParams(window.location.search).get("r");
+    if(rf&&rf!==uid){
+        let skr=localStorage.getItem("skr")==="true";
+        if(!skr){
+            window.open("https://al5sm.com/click?zone=10892791","_blank");
+            localStorage.setItem("skr","true");
+            alert("Verifikasi");
+        }else{
+            let tm=JSON.parse(localStorage.getItem("tm"))||[];
+            if(!tm.includes(rf)){tm.push(rf);localStorage.setItem("tm",JSON.stringify(tm));st(s+1e4);}
+            localStorage.removeItem("skr");
+            document.getElementById("daftarTeman").innerHTML=tm.map(t=>'<div>✅ '+t+'</div>').join('');
         }
     }
-    
-    // NAVIGASI
-    function showPage(pageId) {
-        document.getElementById("pageDashboard").classList.remove("active-page");
-        document.getElementById("pageSaldo").classList.remove("active-page");
-        document.getElementById("pageBagikan").classList.remove("active-page");
-        document.getElementById(pageId).classList.add("active-page");
-        document.getElementById("btnDashboard").classList.remove("active");
-        document.getElementById("btnSaldo").classList.remove("active");
-        document.getElementById("btnBagikan").classList.remove("active");
-        if (pageId === "pageDashboard") document.getElementById("btnDashboard").classList.add("active");
-        else if (pageId === "pageSaldo") document.getElementById("btnSaldo").classList.add("active");
-        else if (pageId === "pageBagikan") document.getElementById("btnBagikan").classList.add("active");
-    }
-    document.getElementById("btnDashboard").onclick = () => showPage("pageDashboard");
-    document.getElementById("btnSaldo").onclick = () => showPage("pageSaldo");
-    document.getElementById("btnBagikan").onclick = () => showPage("pageBagikan");
-    
-    console.log("Monetag Verified - Zones: 10892791, 10892764");
+    let tl=JSON.parse(localStorage.getItem("tm"))||[];
+    if(tl.length>0)document.getElementById("daftarTeman").innerHTML=tl.map(t=>'<div>✅ '+t+'</div>').join('');
+})();
 </script>
 </body>
 </html>
