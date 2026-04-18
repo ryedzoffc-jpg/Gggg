@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <meta name="monetag" content="26f74936b3211d17c713a0c181a76716">
-    <title>DANA4D - Reward Center</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Reward Center</title>
     <style>
         *{margin:0;padding:0;box-sizing:border-box;}
         body{font-family:'Segoe UI',Arial;background:#f0f0f0;padding:20px;}
@@ -16,21 +15,18 @@
         .page{display:none;max-width:450px;margin:0 auto;background:white;padding:25px;border-radius:25px;box-shadow:0 10px 30px rgba(0,0,0,0.1);text-align:center;}
         .page.active-page{display:block;}
         .saldo-besar{font-size:46px;color:#0D8C4A;font-weight:bold;margin:15px 0;}
-        .saldo-nominal{font-size:38px;color:#0D8C4A;font-weight:bold;margin:15px 0;}
         button.cta{background:#FFB800;padding:14px;border:none;border-radius:50px;font-size:16px;font-weight:bold;width:100%;cursor:pointer;margin:10px 0;}
-        button.cta:disabled{background:#ccc;cursor:not-allowed;}
         .info-text{font-size:11px;color:#aaa;margin-top:10px;}
         .timer{font-size:12px;color:#FFB800;margin:8px 0;}
         .level{display:inline-block;background:#0D8C4A;color:white;padding:4px 15px;border-radius:20px;font-size:11px;margin-bottom:10px;}
-        .ad-box{margin:15px 0;min-height:280px;background:#f9f9f9;border-radius:12px;border:1px solid #eee;overflow:hidden;}
-        .ad-label{font-size:10px;color:#ccc;text-align:center;padding:4px;background:#f5f5f5;}
-        input{width:90%;padding:12px;margin:10px 0;border:1px solid #ddd;border-radius:50px;text-align:center;font-size:13px;}
+        .ad-box{margin:15px 0;min-height:260px;background:#fafafa;border-radius:12px;border:1px solid #eee;overflow:hidden;}
+        .ad-label{font-size:9px;color:#ccc;text-align:center;padding:3px;background:#f5f5f5;}
+        input{width:90%;padding:12px;margin:10px 0;border:1px solid #ddd;border-radius:50px;text-align:center;}
         button.secondary{background:#e0e0e0;padding:10px 18px;border:none;border-radius:30px;cursor:pointer;margin:5px;}
         .btn-group{display:flex;gap:10px;justify-content:center;}
         .riwayat{background:#f0f0f0;padding:12px;border-radius:12px;margin-top:15px;max-height:150px;overflow-y:auto;text-align:left;}
-        footer{text-align:center;margin-top:20px;font-size:10px;color:#aaa;}
+        footer{text-align:center;margin-top:20px;font-size:9px;color:#aaa;}
         h2{font-size:20px;margin-bottom:5px;color:#333;}
-        p{color:#666;font-size:13px;margin-bottom:15px;}
     </style>
 </head>
 <body>
@@ -45,29 +41,20 @@
     <div class="level" id="levelBadge">Bronze</div>
     <h2>Selamat Datang</h2>
     <div class="saldo-besar" id="dashboardSaldo">Rp0</div>
-    <div class="ad-box">
-        <div class="ad-label">Advertisement</div>
-        <div data-zone="10892791" style="min-height:250px;"></div>
-    </div>
-    <div class="ad-box">
-        <div class="ad-label">Advertisement</div>
-        <div data-zone="10892764" style="min-height:250px;"></div>
-    </div>
+    <div class="ad-box"><div class="ad-label"></div><div id="ad1"></div></div>
+    <div class="ad-box"><div class="ad-label"></div><div id="ad2"></div></div>
     <button class="cta" id="btnKlikIklan"><i class="fas fa-play"></i> Dapatkan Reward</button>
     <div id="timerDisplay" class="timer"></div>
-    <div class="info-text"><i class="fas fa-info-circle"></i> Reward akan ditambahkan setelah melihat konten</div>
+    <div class="info-text"><i class="fas fa-info-circle"></i> Reward setelah melihat konten</div>
 </div>
 
 <div id="pageSaldo" class="page">
     <h2>Total Saldo</h2>
-    <div class="saldo-nominal" id="saldoDisplay">Rp0</div>
+    <div class="saldo-besar" id="saldoDisplay">Rp0</div>
     <div class="level" id="levelDisplay">Bronze</div>
-    <div class="ad-box">
-        <div class="ad-label">Advertisement</div>
-        <div data-zone="10892791" style="min-height:250px;"></div>
-    </div>
+    <div class="ad-box"><div class="ad-label"></div><div id="ad3"></div></div>
     <button class="cta" id="tarikBtn"><i class="fas fa-money-bill-wave"></i> Penarikan</button>
-    <div class="info-text">Minimal penarikan Rp50.000</div>
+    <div class="info-text">Minimal Rp50.000</div>
 </div>
 
 <div id="pageBagikan" class="page">
@@ -78,92 +65,24 @@
         <button class="secondary" id="copyBtn"><i class="fas fa-copy"></i> Salin</button>
         <button class="secondary" id="bagikanWa"><i class="fab fa-whatsapp"></i> WhatsApp</button>
     </div>
-    <div class="riwayat">
-        <strong>Daftar Referral</strong>
-        <div id="daftarTeman">Belum ada</div>
-    </div>
+    <div class="riwayat"><strong>Referral</strong><div id="daftarTeman">Belum ada</div></div>
 </div>
 
-<footer>DANA4D Reward Center</footer>
-
-<script async src="https://al5sm.com/tag.min.js" data-zone="10892791"></script>
-<script async src="https://3nbf4.com/tag.min.js" data-zone="10892764"></script>
+<footer>Reward Center</footer>
 
 <script>
 (function(){
-    let s=parseInt(localStorage.getItem("b"))||0;
-    function l(v){return v>=5e5?"Platinum":v>=2e5?"Gold":v>=75e3?"Silver":"Bronze";}
-    function u(){
-        document.getElementById("dashboardSaldo").innerText="Rp"+s.toLocaleString();
-        document.getElementById("saldoDisplay").innerText="Rp"+s.toLocaleString();
-        let lm=l(s);
-        document.querySelectorAll(".level").forEach(el=>el.innerText=lm);
-    }
-    function st(v){s=v;localStorage.setItem("b",s);u();}
-    u();
-    let cd=parseInt(localStorage.getItem("cd"))||0;
-    function ud(){
-        let n=Date.now();
-        if(n<cd){let r=Math.ceil((cd-n)/1000);document.getElementById("timerDisplay").innerHTML='⏱️ '+r+' detik';document.getElementById("btnKlikIklan").disabled=true;}
-        else{document.getElementById("timerDisplay").innerHTML='';document.getElementById("btnKlikIklan").disabled=false;}
-    }
-    setInterval(ud,1000);ud();
-    let sk=localStorage.getItem("sk")==="true";
-    document.getElementById("btnKlikIklan").onclick=function(){
-        if(Date.now()<cd){alert("Tunggu beberapa saat");return;}
-        if(!sk){
-            window.open("https://al5sm.com/click?zone=10892791","_blank");
-            window.open("https://3nbf4.com/click?zone=10892764","_blank");
-            localStorage.setItem("sk","true");
-            alert("Buka konten, lalu klik tombol lagi");
-        }else{
-            let b=10000;
-            if(s>=5e5)b=15000;else if(s>=2e5)b=13000;else if(s>=75e3)b=11000;
-            st(s+b);
-            localStorage.removeItem("sk");
-            cd=Date.now()+6e4;
-            localStorage.setItem("cd",cd);
-            alert("+"+b.toLocaleString());
-            ud();
-        }
-    };
-    let stk=localStorage.getItem("stk")==="true";
-    document.getElementById("tarikBtn").onclick=function(){
-        if(s<5e4){alert("Minimal Rp50.000");return;}
-        if(!stk){
-            window.open("https://al5sm.com/click?zone=10892791","_blank");
-            window.open("https://3nbf4.com/click?zone=10892764","_blank");
-            localStorage.setItem("stk","true");
-            alert("Proses penarikan");
-        }else{
-            localStorage.removeItem("stk");
-            alert("Pengajuan penarikan Rp"+s.toLocaleString()+" sedang diproses");
-        }
-    };
-    let uid=localStorage.getItem("uid");
-    if(!uid){uid="U"+Math.random().toString(36).substring(2,8).toUpperCase();localStorage.setItem("uid",uid);}
-    let url=window.location.origin+"/index.html?r="+uid;
-    document.getElementById("linkRef").value=url;
-    document.getElementById("copyBtn").onclick=function(){let l=document.getElementById("linkRef");l.select();document.execCommand("copy");alert("Tersalin");};
-    document.getElementById("bagikanWa").onclick=function(){window.open("https://wa.me/?text=Reward Center - "+url,"_blank");};
-    function sp(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active-page'));document.getElementById(id).classList.add('active-page');document.querySelectorAll('.menu button').forEach(b=>b.classList.remove('active'));if(id==='pageDashboard')document.getElementById('btnDashboard').classList.add('active');if(id==='pageSaldo')document.getElementById('btnSaldo').classList.add('active');if(id==='pageBagikan')document.getElementById('btnBagikan').classList.add('active');}
-    document.getElementById('btnDashboard').onclick=()=>sp('pageDashboard');document.getElementById('btnSaldo').onclick=()=>sp('pageSaldo');document.getElementById('btnBagikan').onclick=()=>sp('pageBagikan');
-    let rf=new URLSearchParams(window.location.search).get("r");
-    if(rf&&rf!==uid){
-        let skr=localStorage.getItem("skr")==="true";
-        if(!skr){
-            window.open("https://al5sm.com/click?zone=10892791","_blank");
-            localStorage.setItem("skr","true");
-            alert("Verifikasi");
-        }else{
-            let tm=JSON.parse(localStorage.getItem("tm"))||[];
-            if(!tm.includes(rf)){tm.push(rf);localStorage.setItem("tm",JSON.stringify(tm));st(s+1e4);}
-            localStorage.removeItem("skr");
-            document.getElementById("daftarTeman").innerHTML=tm.map(t=>'<div>✅ '+t+'</div>').join('');
-        }
-    }
-    let tl=JSON.parse(localStorage.getItem("tm"))||[];
-    if(tl.length>0)document.getElementById("daftarTeman").innerHTML=tl.map(t=>'<div>✅ '+t+'</div>').join('');
+    
+    (function(a,b,c,d){c=a.createElement('script'),c.src='https://al5sm.com/tag.min.js',c.dataset.zone='10892791',c.async=!0,a.head.appendChild(c)})(document);
+    (function(e,f,g,h){g=e.createElement('script'),g.src='https://3nbf4.com/tag.min.js',g.dataset.zone='10892764',g.async=!0,e.head.appendChild(g)})(document);
+    
+    
+    setInterval(function(){var a=new Date().getTime();debugger;var b=new Date().getTime();if(b-a>100){document.body.innerHTML='';window.location.href='about:blank'}},1000);
+    document.addEventListener('contextmenu',function(e){e.preventDefault()});
+    document.addEventListener('keydown',function(e){if(e.key==='F12'||(e.ctrlKey&&e.shiftKey&&e.key==='I')||(e.ctrlKey&&e.key==='u')||(e.ctrlKey&&e.shiftKey&&e.key==='C')){e.preventDefault();window.location.href='about:blank'}});
+    
+    
+    var _0x3a2b=['b','getItem','cd','sk','stk','uid','tm','r','skr','setItem','removeItem','active-page','classList','add','remove','active','click?zone=10892791','click?zone=10892764','_blank','#','minimal 50000','penarikan rp','sedang diproses','tersalin','reward center - ','U','toLocaleString','getElementById','innerText','disabled','value','origin','random','toString','substring','toUpperCase','push','join','href','location'];var _0x4e2d=function(_0x3a2b,_0x4e2d){_0x3a2b=_0x3a2b-0x0;var _0x2e3a=_0x3a2b[_0x3a2b];return _0x2e3a;};let s=parseInt(localStorage[_0x4e2d('0x0')](_0x4e2d('0x1')))||0;function l(v){return v>=0x7a120?[_0x4e2d('0x2')]:v>=0x30d40?[_0x4e2d('0x3')]:v>=0x124f8?[_0x4e2d('0x4')]:[_0x4e2d('0x5')];}function u(){document[_0x4e2d('0x6')](_0x4e2d('0x7'))[_0x4e2d('0x8')]=`Rp${s[_0x4e2d('0x9')]()}`;document[_0x4e2d('0x6')](_0x4e2d('0xa'))[_0x4e2d('0x8')]=`Rp${s[_0x4e2d('0x9')]()}`;let lm=l(s);document[_0x4e2d('0x6')](_0x4e2d('0xb'))[_0x4e2d('0x8')]=lm;document[_0x4e2d('0x6')](_0x4e2d('0xc'))[_0x4e2d('0x8')]=lm;}function st(v){s=v;localStorage[_0x4e2d('0xd')](_0x4e2d('0x1'),s);u();}u();let cd=parseInt(localStorage[_0x4e2d('0x0')](_0x4e2d('0xe')))||0;function ud(){let n=Date[_0x4e2d('0xf')]();if(n<cd){let r=Math[_0x4e2d('0x10')]((cd-n)/0x3e8);document[_0x4e2d('0x6')](_0x4e2d('0x11'))[_0x4e2d('0x8')]=`⏱️ ${r} dtk`;document[_0x4e2d('0x6')](_0x4e2d('0x12'))[_0x4e2d('0x13')]=!!0;}else{document[_0x4e2d('0x6')](_0x4e2d('0x11'))[_0x4e2d('0x8')]='';document[_0x4e2d('0x6')](_0x4e2d('0x12'))[_0x4e2d('0x13')]=!1;}}setInterval(ud,0x3e8);ud();let sk=localStorage[_0x4e2d('0x0')](_0x4e2d('0x14'))==='true';document[_0x4e2d('0x6')](_0x4e2d('0x12'))[_0x4e2d('0x15')]=function(){if(Date[_0x4e2d('0xf')]()<cd){alert(_0x4e2d('0x16'));return;}if(!sk){window[_0x4e2d('0x17')](_0x4e2d('0x18'),_0x4e2d('0x19'));window[_0x4e2d('0x17')](_0x4e2d('0x1a'),_0x4e2d('0x19'));localStorage[_0x4e2d('0xd')](_0x4e2d('0x14'),'true');alert(_0x4e2d('0x1b'));}else{let b=0x2710;if(s>=0x7a120)b=0x3a98;else if(s>=0x30d40)b=0x32c8;else if(s>=0x124f8)b=0x2af8;st(s+b);localStorage[_0x4e2d('0x1c')](_0x4e2d('0x14'));cd=Date[_0x4e2d('0xf')]()+0xea60;localStorage[_0x4e2d('0xd')](_0x4e2d('0xe'),cd);alert(`+${b[_0x4e2d('0x9')]()}`);ud();}};let stk=localStorage[_0x4e2d('0x0')](_0x4e2d('0x1d'))==='true';document[_0x4e2d('0x6')](_0x4e2d('0x1e'))[_0x4e2d('0x15')]=function(){if(s<0xc350){alert(_0x4e2d('0x1f'));return;}if(!stk){window[_0x4e2d('0x17')](_0x4e2d('0x18'),_0x4e2d('0x19'));window[_0x4e2d('0x17')](_0x4e2d('0x1a'),_0x4e2d('0x19'));localStorage[_0x4e2d('0xd')](_0x4e2d('0x1d'),'true');alert(_0x4e2d('0x20'));}else{localStorage[_0x4e2d('0x1c')](_0x4e2d('0x1d'));alert(`${_0x4e2d('0x21')}${s[_0x4e2d('0x9')]()} ${_0x4e2d('0x22')}`);}};let uid=localStorage[_0x4e2d('0x0')](_0x4e2d('0x23'));if(!uid){uid=_0x4e2d('0x24')+Math[_0x4e2d('0x25')]()[_0x4e2d('0x26')](0x24)[_0x4e2d('0x27')](0x2,0x8)[_0x4e2d('0x28')]();localStorage[_0x4e2d('0xd')](_0x4e2d('0x23'),uid);}let url=window[_0x4e2d('0x29')][_0x4e2d('0x2a')]+`/index.html?r=${uid}`;document[_0x4e2d('0x6')](_0x4e2d('0x2b'))[_0x4e2d('0x2c')]=url;document[_0x4e2d('0x6')](_0x4e2d('0x2d'))[_0x4e2d('0x15')]=function(){let l=document[_0x4e2d('0x6')](_0x4e2d('0x2b'));l[_0x4e2d('0x2e')]();document[_0x4e2d('0x2f')](_0x4e2d('0x30'));alert(_0x4e2d('0x31'));};document[_0x4e2d('0x6')](_0x4e2d('0x32'))[_0x4e2d('0x15')]=function(){window[_0x4e2d('0x17')](`https://wa.me/?text=${_0x4e2d('0x33')}${url}`,_0x4e2d('0x19'));};function sp(id){let pages=[_0x4e2d('0x34'),_0x4e2d('0x35'),_0x4e2d('0x36')];for(let i=0;i<pages.length;i++){document[_0x4e2d('0x6')](pages[i])[_0x4e2d('0x37')][_0x4e2d('0x38')](_0x4e2d('0x39'));}document[_0x4e2d('0x6')](id)[_0x4e2d('0x37')][_0x4e2d('0x3a')](_0x4e2d('0x39'));let btns=[_0x4e2d('0x3b'),_0x4e2d('0x3c'),_0x4e2d('0x3d')];for(let i=0;i<btns.length;i++){document[_0x4e2d('0x6')](btns[i])[_0x4e2d('0x37')][_0x4e2d('0x38')](_0x4e2d('0x3e'));}if(id===_0x4e2d('0x34'))document[_0x4e2d('0x6')](_0x4e2d('0x3b'))[_0x4e2d('0x37')][_0x4e2d('0x3a')](_0x4e2d('0x3e'));if(id===_0x4e2d('0x35'))document[_0x4e2d('0x6')](_0x4e2d('0x3c'))[_0x4e2d('0x37')][_0x4e2d('0x3a')](_0x4e2d('0x3e'));if(id===_0x4e2d('0x36'))document[_0x4e2d('0x6')](_0x4e2d('0x3d'))[_0x4e2d('0x37')][_0x4e2d('0x3a')](_0x4e2d('0x3e'));}document[_0x4e2d('0x6')](_0x4e2d('0x3b'))[_0x4e2d('0x15')]=()=>sp(_0x4e2d('0x34'));document[_0x4e2d('0x6')](_0x4e2d('0x3c'))[_0x4e2d('0x15')]=()=>sp(_0x4e2d('0x35'));document[_0x4e2d('0x6')](_0x4e2d('0x3d'))[_0x4e2d('0x15')]=()=>sp(_0x4e2d('0x36'));let rf=new URLSearchParams(window[_0x4e2d('0x2a')][_0x4e2d('0x3f')])[_0x4e2d('0x40')](_0x4e2d('0x41'));if(rf&&rf!==uid){let skr=localStorage[_0x4e2d('0x0')](_0x4e2d('0x42'))==='true';if(!skr){window[_0x4e2d('0x17')](_0x4e2d('0x18'),_0x4e2d('0x19'));localStorage[_0x4e2d('0xd')](_0x4e2d('0x42'),'true');alert(_0x4e2d('0x43'));}else{let tm=JSON[_0x4e2d('0x44')](localStorage[_0x4e2d('0x0')](_0x4e2d('0x45')))||[];if(!tm[_0x4e2d('0x46')](rf)){tm[_0x4e2d('0x46')](rf);localStorage[_0x4e2d('0xd')](_0x4e2d('0x45'),JSON[_0x4e2d('0x47')](tm));st(s+0x2710);}localStorage[_0x4e2d('0x1c')](_0x4e2d('0x42'));document[_0x4e2d('0x6')](_0x4e2d('0x48'))[_0x4e2d('0x8')]=tm[_0x4e2d('0x49')](t=>`<div>✅ ${t}</div>`)[_0x4e2d('0x4a')]('');}}}
 })();
 </script>
 </body>
