@@ -2,87 +2,653 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
     <meta name="monetag" content="26f74936b3211d17c713a0c181a76716">
-    <title>Reward Center</title>
+    <title>DANA - Penghasilan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- MONETAG SCRIPT - ZONE 231027 -->
+    <script src="https://quge5.com/88/tag.min.js" data-zone="231027" async data-cfasync="false"></script>
+    
     <style>
-        *{margin:0;padding:0;box-sizing:border-box;}
-        body{font-family:'Segoe UI',Arial;background:#f0f0f0;padding:20px;}
-        .menu{display:flex;gap:10px;background:#0D8C4A;padding:12px 15px;justify-content:center;border-radius:50px;margin-bottom:20px;}
-        .menu button{background:transparent;color:white;border:none;padding:8px 22px;border-radius:30px;font-size:15px;cursor:pointer;font-weight:bold;}
-        .menu button i{margin-right:8px;}
-        .menu button.active{background:#FFB800;color:black;}
-        .page{display:none;max-width:450px;margin:0 auto;background:white;padding:25px;border-radius:25px;box-shadow:0 10px 30px rgba(0,0,0,0.1);text-align:center;}
-        .page.active-page{display:block;}
-        .saldo-besar{font-size:46px;color:#0D8C4A;font-weight:bold;margin:15px 0;}
-        button.cta{background:#FFB800;padding:14px;border:none;border-radius:50px;font-size:16px;font-weight:bold;width:100%;cursor:pointer;margin:10px 0;}
-        .info-text{font-size:11px;color:#aaa;margin-top:10px;}
-        .timer{font-size:12px;color:#FFB800;margin:8px 0;}
-        .level{display:inline-block;background:#0D8C4A;color:white;padding:4px 15px;border-radius:20px;font-size:11px;margin-bottom:10px;}
-        .ad-box{margin:15px 0;min-height:260px;background:#fafafa;border-radius:12px;border:1px solid #eee;overflow:hidden;}
-        .ad-label{font-size:9px;color:#ccc;text-align:center;padding:3px;background:#f5f5f5;}
-        input{width:90%;padding:12px;margin:10px 0;border:1px solid #ddd;border-radius:50px;text-align:center;}
-        button.secondary{background:#e0e0e0;padding:10px 18px;border:none;border-radius:30px;cursor:pointer;margin:5px;}
-        .btn-group{display:flex;gap:10px;justify-content:center;}
-        .riwayat{background:#f0f0f0;padding:12px;border-radius:12px;margin-top:15px;max-height:150px;overflow-y:auto;text-align:left;}
-        footer{text-align:center;margin-top:20px;font-size:9px;color:#aaa;}
-        h2{font-size:20px;margin-bottom:5px;color:#333;}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f5f7fb;
+            min-height: 100vh;
+        }
+        
+        .status-bar {
+            background: linear-gradient(135deg, #0D8C4A 0%, #0A6E3A 100%);
+            padding: 12px 20px 8px;
+            display: flex;
+            justify-content: space-between;
+            color: white;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #0D8C4A 0%, #0A6E3A 100%);
+            padding: 20px 20px 30px;
+            color: white;
+            border-radius: 0 0 30px 30px;
+        }
+        
+        .greeting {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-bottom: 8px;
+        }
+        
+        .username {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .balance-card {
+            background: white;
+            margin: -20px 16px 20px;
+            border-radius: 24px;
+            padding: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+        
+        .balance-label {
+            font-size: 14px;
+            color: #6c757d;
+            margin-bottom: 8px;
+        }
+        
+        .balance-amount {
+            font-size: 42px;
+            font-weight: 800;
+            color: #0D8C4A;
+            letter-spacing: -1px;
+        }
+        
+        .level-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #E8F5E9;
+            padding: 6px 14px;
+            border-radius: 30px;
+            margin-top: 10px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #0D8C4A;
+        }
+        
+        .menu {
+            display: flex;
+            background: white;
+            margin: 0 16px 20px;
+            border-radius: 60px;
+            padding: 6px;
+            gap: 6px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+        }
+        
+        .menu button {
+            flex: 1;
+            background: transparent;
+            border: none;
+            padding: 12px 0;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: #6c757d;
+        }
+        
+        .menu button i {
+            margin-right: 8px;
+            font-size: 14px;
+        }
+        
+        .menu button.active {
+            background: #0D8C4A;
+            color: white;
+            box-shadow: 0 2px 8px rgba(13,140,74,0.3);
+        }
+        
+        .content {
+            padding: 0 16px 30px;
+        }
+        
+        .page {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .page.active-page {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+        }
+        
+        .card-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #212529;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .card-title i {
+            color: #0D8C4A;
+            font-size: 18px;
+        }
+        
+        .ad-container {
+            background: #f8f9fa;
+            border-radius: 16px;
+            overflow: hidden;
+            margin: 16px 0;
+            min-height: 260px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .btn-primary {
+            background: #0D8C4A;
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 8px;
+        }
+        
+        .btn-primary:active {
+            transform: scale(0.97);
+            background: #0A6E3A;
+        }
+        
+        .btn-primary:disabled {
+            background: #adb5bd;
+            transform: none;
+            cursor: not-allowed;
+        }
+        
+        .timer {
+            text-align: center;
+            font-size: 13px;
+            color: #f59e0b;
+            margin-top: 12px;
+            font-weight: 500;
+        }
+        
+        .ref-link {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 50px;
+            padding: 12px 16px;
+            font-size: 12px;
+            color: #495057;
+            text-align: center;
+            margin: 12px 0;
+            word-break: break-all;
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 12px;
+        }
+        
+        .btn-secondary {
+            flex: 1;
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            padding: 12px;
+            border-radius: 50px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+        
+        .referral-list {
+            background: #f8f9fa;
+            border-radius: 16px;
+            padding: 16px;
+            margin-top: 16px;
+        }
+        
+        .referral-list .title {
+            font-weight: 600;
+            margin-bottom: 12px;
+            font-size: 13px;
+            color: #6c757d;
+        }
+        
+        .info-text {
+            font-size: 11px;
+            color: #adb5bd;
+            text-align: center;
+            margin-top: 12px;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 10px;
+            color: #adb5bd;
+        }
+        
+        .flex-between {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .text-success {
+            color: #0D8C4A;
+        }
+        
+        .notification-prompt {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            background: #1a1a2e;
+            color: white;
+            padding: 16px;
+            border-radius: 16px;
+            display: none;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+        
+        .notification-prompt button {
+            background: #0D8C4A;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 30px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        
+        .close-prompt {
+            background: transparent;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 0 8px;
+        }
     </style>
 </head>
 <body>
 
+<div class="status-bar">
+    <span><i class="fas fa-signal"></i>  <i class="fas fa-wifi"></i></span>
+    <span>09:41</span>
+    <span><i class="fas fa-battery-full"></i></span>
+</div>
+
+<div class="header">
+    <div class="greeting">Selamat datang,</div>
+    <div class="username" id="userName">Member Setia</div>
+</div>
+
+<div class="balance-card">
+    <div class="balance-label">Total Saldo</div>
+    <div class="balance-amount" id="mainBalance">Rp0</div>
+    <div class="level-badge" id="levelBadge">
+        <i class="fas fa-crown"></i> <span id="levelText">Bronze</span>
+    </div>
+</div>
+
 <div class="menu">
     <button id="btnDashboard" class="active"><i class="fas fa-home"></i> Beranda</button>
-    <button id="btnSaldo"><i class="fas fa-wallet"></i> Saldo</button>
-    <button id="btnBagikan"><i class="fas fa-users"></i> Undang</button>
+    <button id="btnSaldo"><i class="fas fa-history"></i> Riwayat</button>
+    <button id="btnBagikan"><i class="fas fa-share-alt"></i> Bagikan</button>
 </div>
 
-<div id="pageDashboard" class="page active-page">
-    <div class="level" id="levelBadge">Bronze</div>
-    <h2>Selamat Datang</h2>
-    <div class="saldo-besar" id="dashboardSaldo">Rp0</div>
-    <div class="ad-box"><div class="ad-label"></div><div id="ad1"></div></div>
-    <div class="ad-box"><div class="ad-label"></div><div id="ad2"></div></div>
-    <button class="cta" id="btnKlikIklan"><i class="fas fa-play"></i> Dapatkan Reward</button>
-    <div id="timerDisplay" class="timer"></div>
-    <div class="info-text"><i class="fas fa-info-circle"></i> Reward setelah melihat konten</div>
-</div>
-
-<div id="pageSaldo" class="page">
-    <h2>Total Saldo</h2>
-    <div class="saldo-besar" id="saldoDisplay">Rp0</div>
-    <div class="level" id="levelDisplay">Bronze</div>
-    <div class="ad-box"><div class="ad-label"></div><div id="ad3"></div></div>
-    <button class="cta" id="tarikBtn"><i class="fas fa-money-bill-wave"></i> Penarikan</button>
-    <div class="info-text">Minimal Rp50.000</div>
-</div>
-
-<div id="pageBagikan" class="page">
-    <h2>Undang Pengguna Baru</h2>
-    <p>Dapatkan bonus untuk setiap pengguna baru</p>
-    <input type="text" id="linkRef" readonly>
-    <div class="btn-group">
-        <button class="secondary" id="copyBtn"><i class="fas fa-copy"></i> Salin</button>
-        <button class="secondary" id="bagikanWa"><i class="fab fa-whatsapp"></i> WhatsApp</button>
+<div class="content">
+    <div id="pageDashboard" class="page active-page">
+        <div class="card">
+            <div class="card-title">
+                <i class="fas fa-gift"></i> Reward Harian
+            </div>
+            <p style="font-size: 13px; color: #6c757d; margin-bottom: 16px;">Tonton konten untuk mendapatkan reward</p>
+            <div class="ad-container" id="adContainer"></div>
+            <button class="btn-primary" id="btnClaimReward">
+                <i class="fas fa-play-circle"></i> Klaim Reward
+            </button>
+            <div id="timerDisplay" class="timer"></div>
+            <div class="info-text">
+                <i class="fas fa-shield-alt"></i> Reward akan ditambahkan otomatis
+            </div>
+        </div>
     </div>
-    <div class="riwayat"><strong>Referral</strong><div id="daftarTeman">Belum ada</div></div>
+
+    <div id="pageSaldo" class="page">
+        <div class="card">
+            <div class="card-title">
+                <i class="fas fa-chart-line"></i> Statistik
+            </div>
+            <div class="flex-between" style="margin-bottom: 16px;">
+                <span style="color: #6c757d;">Total Penghasilan</span>
+                <span class="text-success" style="font-weight: 700;" id="totalEarned">Rp0</span>
+            </div>
+            <div class="flex-between" style="margin-bottom: 16px;">
+                <span style="color: #6c757d;">Level Saat Ini</span>
+                <span class="text-success" id="levelDetail">Bronze</span>
+            </div>
+            <button class="btn-primary" id="btnWithdraw">
+                <i class="fas fa-money-bill-wave"></i> Tarik Saldo
+            </button>
+            <div class="info-text">Minimal penarikan Rp50.000</div>
+        </div>
+    </div>
+
+    <div id="pageBagikan" class="page">
+        <div class="card">
+            <div class="card-title">
+                <i class="fas fa-users"></i> Ajak Teman
+            </div>
+            <p style="font-size: 13px; color: #6c757d; margin-bottom: 12px;">Dapatkan bonus Rp10.000 untuk setiap teman yang bergabung</p>
+            <div class="ref-link" id="refLink">Loading...</div>
+            <div class="btn-group">
+                <button class="btn-secondary" id="copyLinkBtn"><i class="fas fa-copy"></i> Salin</button>
+                <button class="btn-secondary" id="shareWaBtn"><i class="fab fa-whatsapp"></i> WhatsApp</button>
+            </div>
+            <div class="referral-list">
+                <div class="title"><i class="fas fa-user-check"></i> Teman Bergabung</div>
+                <div id="referralList">Belum ada</div>
+            </div>
+        </div>
+    </div>
 </div>
 
-<footer>Reward Center</footer>
+<div class="footer">
+    <i class="fas fa-lock"></i> Terverifikasi & Aman
+</div>
+
+<div class="notification-prompt" id="notifPrompt">
+    <span><i class="fas fa-bell"></i> Aktifkan notifikasi untuk info reward</span>
+    <div>
+        <button id="enableNotifBtn">Aktifkan</button>
+        <span class="close-prompt" id="closePromptBtn">&times;</span>
+    </div>
+</div>
 
 <script>
 (function(){
+    // FIREBASE FCM (Push Notification)
+    const firebaseConfig = {
+        apiKey: "AIzaSyDlJwwL4qGleoiJ65vwfzmYyZ1OWDygnhw",
+        authDomain: "draznews.firebaseapp.com",
+        databaseURL: "https://draznews-default-rtdb.firebaseio.com",
+        projectId: "draznews",
+        storageBucket: "draznews.firebasestorage.app",
+        messagingSenderId: "169063075153",
+        appId: "1:169063075153:web:b3cd52d3f34d768dafd770",
+        measurementId: "G-2P48317DPY"
+    };
     
-    (function(a,b,c,d){c=a.createElement('script'),c.src='https://al5sm.com/tag.min.js',c.dataset.zone='10892791',c.async=!0,a.head.appendChild(c)})(document);
-    (function(e,f,g,h){g=e.createElement('script'),g.src='https://3nbf4.com/tag.min.js',g.dataset.zone='10892764',g.async=!0,e.head.appendChild(g)})(document);
+    // Load Firebase dynamically
+    import('https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js').then(({ initializeApp }) => {
+        import('https://www.gstatic.com/firebasejs/9.22.0/firebase-messaging.js').then(({ getMessaging, getToken, onMessage }) => {
+            const app = initializeApp(firebaseConfig);
+            const messaging = getMessaging(app);
+            
+            // Register SW dulu
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('/sw.js').then(reg => {
+                    console.log('SW registered');
+                    
+                    // Request token after SW ready
+                    function requestToken() {
+                        getToken(messaging, { vapidKey: null }).then(token => {
+                            if (token) {
+                                console.log('FCM Token:', token);
+                                localStorage.setItem('fcm_token', token);
+                                document.getElementById('notifPrompt').style.display = 'none';
+                            }
+                        }).catch(err => {
+                            console.log('FCM error:', err);
+                        });
+                    }
+                    
+                    // Handle foreground messages
+                    onMessage(messaging, (payload) => {
+                        console.log('Message received:', payload);
+                        if (Notification.permission === 'granted') {
+                            navigator.serviceWorker.ready.then(reg => {
+                                reg.showNotification(payload.notification?.title || 'DANA Reward', {
+                                    body: payload.notification?.body || 'Ada reward baru untuk Anda!',
+                                    icon: '/icon-192.png',
+                                    vibrate: [200, 100, 200]
+                                });
+                            });
+                        }
+                    });
+                    
+                    // Cek permission
+                    if (Notification.permission === 'granted') {
+                        requestToken();
+                    } else if (Notification.permission !== 'denied') {
+                        document.getElementById('notifPrompt').style.display = 'flex';
+                    }
+                    
+                    document.getElementById('enableNotifBtn').onclick = () => {
+                        Notification.requestPermission().then(perm => {
+                            if (perm === 'granted') {
+                                requestToken();
+                            }
+                            document.getElementById('notifPrompt').style.display = 'none';
+                        });
+                    };
+                    
+                    document.getElementById('closePromptBtn').onclick = () => {
+                        document.getElementById('notifPrompt').style.display = 'none';
+                    };
+                }).catch(err => console.log('SW reg failed:', err));
+            }
+        });
+    }).catch(err => console.log('Firebase error:', err));
     
+    // CORE LOGIC
+    let balance = parseInt(localStorage.getItem('dl_balance')) || 0;
+    let totalEarned = parseInt(localStorage.getItem('dl_earned')) || 0;
+    let userId = localStorage.getItem('dl_user');
+    if(!userId){
+        userId = 'U' + Math.random().toString(36).substring(2, 10).toUpperCase();
+        localStorage.setItem('dl_user', userId);
+    }
     
-    setInterval(function(){var a=new Date().getTime();debugger;var b=new Date().getTime();if(b-a>100){document.body.innerHTML='';window.location.href='about:blank'}},1000);
-    document.addEventListener('contextmenu',function(e){e.preventDefault()});
-    document.addEventListener('keydown',function(e){if(e.key==='F12'||(e.ctrlKey&&e.shiftKey&&e.key==='I')||(e.ctrlKey&&e.key==='u')||(e.ctrlKey&&e.shiftKey&&e.key==='C')){e.preventDefault();window.location.href='about:blank'}});
+    function getLevel(b){
+        if(b >= 500000) return {name: 'Platinum', bonus: 15000};
+        if(b >= 200000) return {name: 'Gold', bonus: 13000};
+        if(b >= 75000) return {name: 'Silver', bonus: 11000};
+        return {name: 'Bronze', bonus: 10000};
+    }
     
+    function updateUI(){
+        let level = getLevel(balance);
+        document.getElementById('mainBalance').innerHTML = 'Rp' + balance.toLocaleString();
+        document.getElementById('totalEarned').innerHTML = 'Rp' + totalEarned.toLocaleString();
+        document.getElementById('levelText').innerHTML = level.name;
+        document.getElementById('levelDetail').innerHTML = level.name;
+        document.getElementById('userName').innerHTML = userId;
+    }
     
-    var _0x3a2b=['b','getItem','cd','sk','stk','uid','tm','r','skr','setItem','removeItem','active-page','classList','add','remove','active','click?zone=10892791','click?zone=10892764','_blank','#','minimal 50000','penarikan rp','sedang diproses','tersalin','reward center - ','U','toLocaleString','getElementById','innerText','disabled','value','origin','random','toString','substring','toUpperCase','push','join','href','location'];var _0x4e2d=function(_0x3a2b,_0x4e2d){_0x3a2b=_0x3a2b-0x0;var _0x2e3a=_0x3a2b[_0x3a2b];return _0x2e3a;};let s=parseInt(localStorage[_0x4e2d('0x0')](_0x4e2d('0x1')))||0;function l(v){return v>=0x7a120?[_0x4e2d('0x2')]:v>=0x30d40?[_0x4e2d('0x3')]:v>=0x124f8?[_0x4e2d('0x4')]:[_0x4e2d('0x5')];}function u(){document[_0x4e2d('0x6')](_0x4e2d('0x7'))[_0x4e2d('0x8')]=`Rp${s[_0x4e2d('0x9')]()}`;document[_0x4e2d('0x6')](_0x4e2d('0xa'))[_0x4e2d('0x8')]=`Rp${s[_0x4e2d('0x9')]()}`;let lm=l(s);document[_0x4e2d('0x6')](_0x4e2d('0xb'))[_0x4e2d('0x8')]=lm;document[_0x4e2d('0x6')](_0x4e2d('0xc'))[_0x4e2d('0x8')]=lm;}function st(v){s=v;localStorage[_0x4e2d('0xd')](_0x4e2d('0x1'),s);u();}u();let cd=parseInt(localStorage[_0x4e2d('0x0')](_0x4e2d('0xe')))||0;function ud(){let n=Date[_0x4e2d('0xf')]();if(n<cd){let r=Math[_0x4e2d('0x10')]((cd-n)/0x3e8);document[_0x4e2d('0x6')](_0x4e2d('0x11'))[_0x4e2d('0x8')]=`⏱️ ${r} dtk`;document[_0x4e2d('0x6')](_0x4e2d('0x12'))[_0x4e2d('0x13')]=!!0;}else{document[_0x4e2d('0x6')](_0x4e2d('0x11'))[_0x4e2d('0x8')]='';document[_0x4e2d('0x6')](_0x4e2d('0x12'))[_0x4e2d('0x13')]=!1;}}setInterval(ud,0x3e8);ud();let sk=localStorage[_0x4e2d('0x0')](_0x4e2d('0x14'))==='true';document[_0x4e2d('0x6')](_0x4e2d('0x12'))[_0x4e2d('0x15')]=function(){if(Date[_0x4e2d('0xf')]()<cd){alert(_0x4e2d('0x16'));return;}if(!sk){window[_0x4e2d('0x17')](_0x4e2d('0x18'),_0x4e2d('0x19'));window[_0x4e2d('0x17')](_0x4e2d('0x1a'),_0x4e2d('0x19'));localStorage[_0x4e2d('0xd')](_0x4e2d('0x14'),'true');alert(_0x4e2d('0x1b'));}else{let b=0x2710;if(s>=0x7a120)b=0x3a98;else if(s>=0x30d40)b=0x32c8;else if(s>=0x124f8)b=0x2af8;st(s+b);localStorage[_0x4e2d('0x1c')](_0x4e2d('0x14'));cd=Date[_0x4e2d('0xf')]()+0xea60;localStorage[_0x4e2d('0xd')](_0x4e2d('0xe'),cd);alert(`+${b[_0x4e2d('0x9')]()}`);ud();}};let stk=localStorage[_0x4e2d('0x0')](_0x4e2d('0x1d'))==='true';document[_0x4e2d('0x6')](_0x4e2d('0x1e'))[_0x4e2d('0x15')]=function(){if(s<0xc350){alert(_0x4e2d('0x1f'));return;}if(!stk){window[_0x4e2d('0x17')](_0x4e2d('0x18'),_0x4e2d('0x19'));window[_0x4e2d('0x17')](_0x4e2d('0x1a'),_0x4e2d('0x19'));localStorage[_0x4e2d('0xd')](_0x4e2d('0x1d'),'true');alert(_0x4e2d('0x20'));}else{localStorage[_0x4e2d('0x1c')](_0x4e2d('0x1d'));alert(`${_0x4e2d('0x21')}${s[_0x4e2d('0x9')]()} ${_0x4e2d('0x22')}`);}};let uid=localStorage[_0x4e2d('0x0')](_0x4e2d('0x23'));if(!uid){uid=_0x4e2d('0x24')+Math[_0x4e2d('0x25')]()[_0x4e2d('0x26')](0x24)[_0x4e2d('0x27')](0x2,0x8)[_0x4e2d('0x28')]();localStorage[_0x4e2d('0xd')](_0x4e2d('0x23'),uid);}let url=window[_0x4e2d('0x29')][_0x4e2d('0x2a')]+`/index.html?r=${uid}`;document[_0x4e2d('0x6')](_0x4e2d('0x2b'))[_0x4e2d('0x2c')]=url;document[_0x4e2d('0x6')](_0x4e2d('0x2d'))[_0x4e2d('0x15')]=function(){let l=document[_0x4e2d('0x6')](_0x4e2d('0x2b'));l[_0x4e2d('0x2e')]();document[_0x4e2d('0x2f')](_0x4e2d('0x30'));alert(_0x4e2d('0x31'));};document[_0x4e2d('0x6')](_0x4e2d('0x32'))[_0x4e2d('0x15')]=function(){window[_0x4e2d('0x17')](`https://wa.me/?text=${_0x4e2d('0x33')}${url}`,_0x4e2d('0x19'));};function sp(id){let pages=[_0x4e2d('0x34'),_0x4e2d('0x35'),_0x4e2d('0x36')];for(let i=0;i<pages.length;i++){document[_0x4e2d('0x6')](pages[i])[_0x4e2d('0x37')][_0x4e2d('0x38')](_0x4e2d('0x39'));}document[_0x4e2d('0x6')](id)[_0x4e2d('0x37')][_0x4e2d('0x3a')](_0x4e2d('0x39'));let btns=[_0x4e2d('0x3b'),_0x4e2d('0x3c'),_0x4e2d('0x3d')];for(let i=0;i<btns.length;i++){document[_0x4e2d('0x6')](btns[i])[_0x4e2d('0x37')][_0x4e2d('0x38')](_0x4e2d('0x3e'));}if(id===_0x4e2d('0x34'))document[_0x4e2d('0x6')](_0x4e2d('0x3b'))[_0x4e2d('0x37')][_0x4e2d('0x3a')](_0x4e2d('0x3e'));if(id===_0x4e2d('0x35'))document[_0x4e2d('0x6')](_0x4e2d('0x3c'))[_0x4e2d('0x37')][_0x4e2d('0x3a')](_0x4e2d('0x3e'));if(id===_0x4e2d('0x36'))document[_0x4e2d('0x6')](_0x4e2d('0x3d'))[_0x4e2d('0x37')][_0x4e2d('0x3a')](_0x4e2d('0x3e'));}document[_0x4e2d('0x6')](_0x4e2d('0x3b'))[_0x4e2d('0x15')]=()=>sp(_0x4e2d('0x34'));document[_0x4e2d('0x6')](_0x4e2d('0x3c'))[_0x4e2d('0x15')]=()=>sp(_0x4e2d('0x35'));document[_0x4e2d('0x6')](_0x4e2d('0x3d'))[_0x4e2d('0x15')]=()=>sp(_0x4e2d('0x36'));let rf=new URLSearchParams(window[_0x4e2d('0x2a')][_0x4e2d('0x3f')])[_0x4e2d('0x40')](_0x4e2d('0x41'));if(rf&&rf!==uid){let skr=localStorage[_0x4e2d('0x0')](_0x4e2d('0x42'))==='true';if(!skr){window[_0x4e2d('0x17')](_0x4e2d('0x18'),_0x4e2d('0x19'));localStorage[_0x4e2d('0xd')](_0x4e2d('0x42'),'true');alert(_0x4e2d('0x43'));}else{let tm=JSON[_0x4e2d('0x44')](localStorage[_0x4e2d('0x0')](_0x4e2d('0x45')))||[];if(!tm[_0x4e2d('0x46')](rf)){tm[_0x4e2d('0x46')](rf);localStorage[_0x4e2d('0xd')](_0x4e2d('0x45'),JSON[_0x4e2d('0x47')](tm));st(s+0x2710);}localStorage[_0x4e2d('0x1c')](_0x4e2d('0x42'));document[_0x4e2d('0x6')](_0x4e2d('0x48'))[_0x4e2d('0x8')]=tm[_0x4e2d('0x49')](t=>`<div>✅ ${t}</div>`)[_0x4e2d('0x4a')]('');}}}
+    function addBalance(amount){
+        balance += amount;
+        totalEarned += amount;
+        localStorage.setItem('dl_balance', balance);
+        localStorage.setItem('dl_earned', totalEarned);
+        updateUI();
+        
+        // Send push notification via FCM (simulate)
+        if (Notification.permission === 'granted' && navigator.serviceWorker.controller) {
+            navigator.serviceWorker.ready.then(reg => {
+                reg.showNotification('Reward Ditambahkan', {
+                    body: '+' + amount.toLocaleString() + ' telah masuk ke saldo',
+                    icon: '/icon-192.png'
+                });
+            });
+        }
+    }
+    
+    updateUI();
+    
+    // COOLDOWN
+    let cooldown = parseInt(localStorage.getItem('dl_cooldown')) || 0;
+    function updateCooldownUI(){
+        let now = Date.now();
+        if(now < cooldown){
+            let remain = Math.ceil((cooldown - now) / 1000);
+            document.getElementById('timerDisplay').innerHTML = '<i class="fas fa-hourglass-half"></i> ' + remain + ' detik lagi';
+            document.getElementById('btnClaimReward').disabled = true;
+        } else {
+            document.getElementById('timerDisplay').innerHTML = '';
+            document.getElementById('btnClaimReward').disabled = false;
+        }
+    }
+    setInterval(updateCooldownUI, 1000);
+    updateCooldownUI();
+    
+    // CLAIM REWARD
+    let claimed = localStorage.getItem('dl_claimed') === 'true';
+    document.getElementById('btnClaimReward').onclick = function(){
+        if(Date.now() < cooldown){
+            alert('Tunggu beberapa saat sebelum klaim lagi');
+            return;
+        }
+        if(!claimed){
+            window.open('https://quge5.com/click?zone=231027', '_blank');
+            localStorage.setItem('dl_claimed', 'true');
+            alert('Buka konten, lalu klik tombol klaim lagi');
+        } else {
+            let level = getLevel(balance);
+            let reward = level.bonus;
+            addBalance(reward);
+            localStorage.removeItem('dl_claimed');
+            cooldown = Date.now() + 60000;
+            localStorage.setItem('dl_cooldown', cooldown);
+            alert('+' + reward.toLocaleString() + ' telah ditambahkan');
+            updateCooldownUI();
+        }
+    };
+    
+    // WITHDRAW
+    let withdrawClaimed = localStorage.getItem('dl_withdraw') === 'true';
+    document.getElementById('btnWithdraw').onclick = function(){
+        if(balance < 50000){
+            alert('Minimal penarikan Rp50.000');
+            return;
+        }
+        if(!withdrawClaimed){
+            window.open('https://quge5.com/click?zone=231027', '_blank');
+            localStorage.setItem('dl_withdraw', 'true');
+            alert('Verifikasi');
+        } else {
+            localStorage.removeItem('dl_withdraw');
+            alert('Pengajuan penarikan Rp' + balance.toLocaleString() + ' sedang diproses');
+        }
+    };
+    
+    // REFERRAL
+    let refs = JSON.parse(localStorage.getItem('dl_refs')) || [];
+    function updateReferralUI(){
+        let container = document.getElementById('referralList');
+        if(refs.length === 0){
+            container.innerHTML = '<div style="color:#adb5bd; text-align:center;"><i class="fas fa-user-plus"></i> Belum ada teman</div>';
+        } else {
+            container.innerHTML = refs.map(r => '<div style="padding:8px 0; border-bottom:1px solid #e9ecef;"><i class="fas fa-check-circle" style="color:#0D8C4A;"></i> ' + r + '</div>').join('');
+        }
+    }
+    updateReferralUI();
+    
+    let baseUrl = window.location.origin;
+    document.getElementById('refLink').innerHTML = baseUrl + '/index.html?ref=' + userId;
+    
+    document.getElementById('copyLinkBtn').onclick = function(){
+        let link = document.getElementById('refLink').innerText;
+        navigator.clipboard.writeText(link);
+        alert('Link disalin');
+    };
+    
+    document.getElementById('shareWaBtn').onclick = function(){
+        let link = document.getElementById('refLink').innerText;
+        window.open('https://wa.me/?text=Yuk dapat reward dari DANA! ' + link, '_blank');
+    };
+    
+    // REFERRAL LOGIC
+    let urlRef = new URLSearchParams(window.location.search).get('ref');
+    if(urlRef && urlRef !== userId){
+        let refClaimed = localStorage.getItem('dl_refclaimed') === 'true';
+        if(!refClaimed){
+            window.open('https://quge5.com/click?zone=231027', '_blank');
+            localStorage.setItem('dl_refclaimed', 'true');
+            alert('Verifikasi');
+        } else {
+            if(!refs.includes(urlRef)){
+                refs.push(urlRef);
+                localStorage.setItem('dl_refs', JSON.stringify(refs));
+                addBalance(10000);
+                updateReferralUI();
+            }
+            localStorage.removeItem('dl_refclaimed');
+        }
+    }
+    
+    // NAVIGATION
+    function showPage(pageId){
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active-page'));
+        document.getElementById(pageId).classList.add('active-page');
+        document.querySelectorAll('.menu button').forEach(b => b.classList.remove('active'));
+        if(pageId === 'pageDashboard') document.getElementById('btnDashboard').classList.add('active');
+        if(pageId === 'pageSaldo') document.getElementById('btnSaldo').classList.add('active');
+        if(pageId === 'pageBagikan') document.getElementById('btnBagikan').classList.add('active');
+    }
+    
+    document.getElementById('btnDashboard').onclick = () => showPage('pageDashboard');
+    document.getElementById('btnSaldo').onclick = () => showPage('pageSaldo');
+    document.getElementById('btnBagikan').onclick = () => showPage('pageBagikan');
+    
+    // AD PLACEMENT
+    let adDiv = document.getElementById('adContainer');
+    if(adDiv){
+        let zoneDiv = document.createElement('div');
+        zoneDiv.setAttribute('data-zone', '231027');
+        adDiv.appendChild(zoneDiv);
+    }
 })();
 </script>
 </body>
