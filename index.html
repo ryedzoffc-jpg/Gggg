@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DANA4D - Ajak Teman Dapat Saldo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-messaging-compat.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', Arial; background: #f5f5f5; margin: 0; padding: 20px; }
+        .menu { display: flex; gap: 10px; background: #0D8C4A; padding: 15px; justify-content: center; }
+        .menu a { color: white; text-decoration: none; font-weight: bold; padding: 8px 20px; border-radius: 20px; font-size: 14px; }
+        .menu a i { margin-right: 8px; }
+        .menu a.active { background: #FFB800; color: black; }
+        .container { max-width: 400px; margin: 30px auto; background: white; padding: 20px; border-radius: 15px; text-align: center; }
+        .saldo-besar { font-size: 40px; color: #0D8C4A; font-weight: bold; }
+        button { background: #FFB800; padding: 12px 20px; border: none; border-radius: 30px; font-size: 16px; margin: 10px; cursor: pointer; }
+        button i { margin-right: 8px; }
+        .info { font-size: 12px; color: gray; margin-top: 20px; }
+    </style>
+</head>
+<body>
+<div class="menu">
+    <a href="dashboard.html" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+    <a href="saldo.html"><i class="fas fa-wallet"></i> Saldo</a>
+    <a href="bagikan.html"><i class="fas fa-users"></i> Bagikan</a>
+</div>
+<div class="container">
+    <i class="fas fa-chart-line" style="font-size: 48px; color: #0D8C4A;"></i>
+    <h2>Halo, Member</h2>
+    <p>Saldo DANA anda saat ini:</p>
+    <div class="saldo-besar" id="tampilanSaldo">Rp0</div>
+    <button id="btnKlikIklan"><i class="fas fa-play-circle"></i> Klik Iklan Dapat Rp10.000</button>
+    <div class="info"><i class="fas fa-info-circle"></i> Setiap klik iklan = Rp10.000 langsung masuk saldo</div>
+</div>
+<script src="api.js"></script>
+<script>
+    // Register Service Worker
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js').then(reg => {
+            console.log('SW registered');
+        });
+    }
+
+    let saldo = parseInt(localStorage.getItem("saldoDana")) || 0;
+    document.getElementById("tampilanSaldo").innerText = "Rp" + saldo.toLocaleString();
+
+    let sudahKlikIklan = localStorage.getItem("sudahKlikIklan") === "true";
+    const LINK_IKLAN = "https://shortlink.example/iklan-wajib-1";
+
+    document.getElementById("btnKlikIklan").onclick = function() {
+        if (!sudahKlikIklan) {
+            window.open(LINK_IKLAN, "_blank");
+            localStorage.setItem("sudahKlikIklan", "true");
+            alert("Iklan terbuka. Tutup tab iklan lalu klik tombol lagi untuk klaim saldo!");
+        } else {
+            saldo += 10000;
+            localStorage.setItem("saldoDana", saldo);
+            document.getElementById("tampilanSaldo").innerText = "Rp" + saldo.toLocaleString();
+            localStorage.removeItem("sudahKlikIklan");
+            alert("+Rp10.000 telah masuk ke saldo!");
+        }
+    };
+</script>
+</body>
+  </html>
