@@ -6,22 +6,23 @@
     <meta name="monetag" content="26f74936b3211d17c713a0c181a76716">
     <title>DANA4D - Ajak Teman Dapat Saldo</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-messaging-compat.js"></script>
-    <!-- Monetag Script -->
-    <script async src="https://cdn.monetag.com/static/js/aud.js"></script>
+    <!-- Monetag Script Zone 231027 -->
+    <script src="https://quge5.com/88/tag.min.js" data-zone="231027" async data-cfasync="false"></script>
     <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Segoe UI', Arial; background: #f5f5f5; margin: 0; padding: 20px; }
-        .menu { display: flex; gap: 10px; background: #0D8C4A; padding: 15px; justify-content: center; }
+        .menu { display: flex; gap: 10px; background: #0D8C4A; padding: 15px; justify-content: center; flex-wrap: wrap; }
         .menu a { color: white; text-decoration: none; font-weight: bold; padding: 8px 20px; border-radius: 20px; font-size: 14px; }
         .menu a i { margin-right: 8px; }
         .menu a.active { background: #FFB800; color: black; }
-        .container { max-width: 400px; margin: 30px auto; background: white; padding: 20px; border-radius: 15px; text-align: center; }
-        .saldo-besar { font-size: 40px; color: #0D8C4A; font-weight: bold; }
-        button { background: #FFB800; padding: 12px 20px; border: none; border-radius: 30px; font-size: 16px; margin: 10px; cursor: pointer; }
+        .container { max-width: 400px; margin: 30px auto; background: white; padding: 20px; border-radius: 15px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .saldo-besar { font-size: 40px; color: #0D8C4A; font-weight: bold; margin: 10px 0; }
+        button { background: #FFB800; padding: 12px 20px; border: none; border-radius: 30px; font-size: 16px; margin: 10px; cursor: pointer; transition: transform 0.1s; }
+        button:active { transform: scale(0.97); }
         button i { margin-right: 8px; }
         .info { font-size: 12px; color: gray; margin-top: 20px; }
-        .ad-unit { margin: 20px 0; min-height: 100px; background: #f9f9f9; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #999; border: 1px dashed #ccc; }
+        .ad-container { margin: 20px 0; min-height: 100px; background: #f9f9f9; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #999; border: 1px dashed #ccc; }
+        .vector-icon { width: 60px; height: 60px; margin: 0 auto 10px; background: url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"%230D8C4A\"><path d=\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z\"/></svg>') no-repeat center; background-size: contain; }
     </style>
 </head>
 <body>
@@ -31,28 +32,22 @@
     <a href="bagikan.html"><i class="fas fa-users"></i> Bagikan</a>
 </div>
 <div class="container">
-    <i class="fas fa-chart-line" style="font-size: 48px; color: #0D8C4A;"></i>
+    <div class="vector-icon"></div>
     <h2>Halo, Member</h2>
     <p>Saldo DANA anda saat ini:</p>
     <div class="saldo-besar" id="tampilanSaldo">Rp0</div>
     
-    <!-- Monetag Ad Placement -->
-    <div class="ad-unit" id="monetag-ad-1">
-        <i class="fas fa-ad"></i> Loading iklan...
+    <div class="ad-container" id="monetag-ad-1">
+        <i class="fas fa-ad"></i> Iklan akan muncul di sini
     </div>
     
     <button id="btnKlikIklan"><i class="fas fa-play-circle"></i> Klik Iklan Dapat Rp10.000</button>
     <div class="info"><i class="fas fa-info-circle"></i> Setiap klik iklan = Rp10.000 langsung masuk saldo</div>
 </div>
-<script src="api.js"></script>
-<script>
-    // Register Service Worker
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/sw.js').then(reg => {
-            console.log('SW registered');
-        });
-    }
 
+<script type="module">
+    import './api.js';
+    
     let saldo = parseInt(localStorage.getItem("saldoDana")) || 0;
     document.getElementById("tampilanSaldo").innerText = "Rp" + saldo.toLocaleString();
 
@@ -70,13 +65,18 @@
             document.getElementById("tampilanSaldo").innerText = "Rp" + saldo.toLocaleString();
             localStorage.removeItem("sudahKlikIklan");
             alert("+Rp10.000 telah masuk ke saldo!");
+            
+            // Trigger notifikasi via Firebase
+            if ('serviceWorker' in navigator && navigator.serviceWorker.controller) {
+                navigator.serviceWorker.ready.then(reg => {
+                    reg.showNotification("Saldo Bertambah", { 
+                        body: "Rp10.000 telah ditambahkan ke akun anda",
+                        icon: "/icon-192.png"
+                    });
+                });
+            }
         }
     };
-    
-    // Monetag ad refresh
-    if (typeof Monetag !== 'undefined') {
-        Monetag.refresh();
-    }
 </script>
 </body>
 </html>
